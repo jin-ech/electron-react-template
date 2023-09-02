@@ -1,0 +1,11 @@
+Model Information:
+* title:	Real-time Light Demo: Rotate Lighting (Alt-Drag)
+* source:	https://sketchfab.com/3d-models/real-time-light-demo-rotate-lighting-alt-drag-21f97d94b9a242369ad31d6985652c67
+* author:	Sketchfab (https://sketchfab.com/Sketchfab)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Real-time Light Demo: Rotate Lighting (Alt-Drag)" (https://sketchfab.com/3d-models/real-time-light-demo-rotate-lighting-alt-drag-21f97d94b9a242369ad31d6985652c67) by Sketchfab (https://sketchfab.com/Sketchfab) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

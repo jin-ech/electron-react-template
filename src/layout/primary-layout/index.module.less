@@ -1,0 +1,28 @@
+.container {
+
+    .back {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .layout {
+
+        .header {
+            height: 38px;
+            line-height: 38px;
+            padding-inline: 0;
+            background-color: rgba(#000, .2);
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .content {
+            // height: calc(100vh - 38px);
+            box-sizing: border-box;
+            padding: 24px;
+            z-index: 1;
+        }
+    }
+}

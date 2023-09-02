@@ -1,0 +1,42 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-app-region: drag;
+
+    .menu {
+        width: 320px;
+        -webkit-app-region: no-drag;
+    }
+
+    .center {
+        flex: 1;
+        color: #FFF;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .right {
+        width: 320px;
+        display: flex;
+        justify-content: flex-end;
+        .icon {
+            padding: 12px;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+            color: #fff;
+        }
+    }
+
+    :global {
+        .ant-menu-light .ant-menu-item:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected):hover {
+            color: @primary-color;
+        }
+
+        .ant-menu-light {
+            color: #fff;
+        }
+    }
+}
