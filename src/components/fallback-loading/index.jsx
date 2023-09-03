@@ -10,7 +10,6 @@
 import React from 'react';
 
 import { LoadingOutlined } from '@ant-design/icons';
-import themes from '@/style/lessVariables';
 
 import styles from './index.module.less';
 
@@ -18,7 +17,7 @@ const FallbackLoading = () => {
 
     return (
         <div className={styles.container} >
-            <LoadingOutlined style={{ color: themes['primary-color'] }} />
+            <LoadingOutlined style={{ color: '#1677ff' }} />
         </div>
     );
 }
