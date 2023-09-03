@@ -7,9 +7,8 @@
  * @Description: electron 入口文件
  */
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, globalShortcut, Menu } = require('electron')
+const { app, BrowserWindow, ipcMain, globalShortcut, Menu, contextBridge, ipcRenderer } = require('electron')
 const path = require('path');
-const url = require('url');
 
 const isDev = !app.isPackaged;
 
@@ -25,6 +24,8 @@ function createWindow() {
         frame: false,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: true,
+            contextIsolation: false,
             contentSecurityPolicy: "default-src 'self'; script-src 'self';"
         }
     });
@@ -48,14 +49,29 @@ ipcMain.on('close', (event, arg) => {
     rootWindow.close();
 });
 
+// 处理渲染进程发送的请求
+ipcMain.on('getAppData', (event) => {
+    const appRootPath = path.dirname(app.getAppPath('exe'));
+    // 发送应用程序根路径给渲染进程
+    event.reply('appData', { appRootPath });
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     createWindow();
-
+    // // 向客户端插入 JavaScript 代码
+    // // const appPath = path.resolve(`${apsrPath}`, '..');
+    // rootWindow.webContents.executeJavaScript(`
+    //     console.log('appPath: ', '${path.dirname(app.getAppPath())}');
+    //     localStorage.setItem('appPath', '${path.dirname(app.getAppPath())}');
+    // `);
     globalShortcut.register('Alt+CommandOrControl+I', () => {
         rootWindow.webContents.openDevTools();
+    });
+    globalShortcut.register('CommandOrControl+R', () => {
+        rootWindow.webContents.reload();
     });
 
     app.on('activate', function () {

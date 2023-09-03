@@ -9,11 +9,17 @@
   "build": {
     "productName": "app",
     "appId": "appIdxxxxx",
-    "copyright": "Copyright © 2020 power by jinech",
+    "copyright": "Copyright © 2023 power by jinech",
     "directories": {
       "buildResources": "static",
       "output": "release"
     },
+    "extraResources": [
+      {
+        "from": "./public/static",
+        "to": "static"
+      }
+    ],
     "files": [
       "node_modules/**/*",
       "build/**/*",
@@ -132,6 +138,7 @@
   },
   "scripts": {
     "client": "node scripts/start.js",
+    "electron": "electron ./app.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "start": "concurrently --kill-others-on-fail \"npm run client\" \"electron ./app\"",

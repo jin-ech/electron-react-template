@@ -8,26 +8,22 @@
  */
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { map } from 'lodash';
 
-import { useLocation, useMatch, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import layoutConfig from '@/configure/layout';
 
 import styles from './index.module.less';
-import { isNode, electron } from '@/utils';
 
 const LayoutHeader = () => {
-    // const match = useMatch();
     const location = useLocation();
     const navigate = useNavigate();
     const [selectedKeys, updateSelectedKeys] = useState([]);
 
     const handleClose = () => {
-        if (isNode) {
-            electron.ipcRenderer.send('close');
-        }
+        const electron = window.require('electron');
+        electron.ipcRenderer.send('close');
     };
 
     useEffect(() => {

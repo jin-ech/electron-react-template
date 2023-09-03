@@ -10,17 +10,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/**
- * @description: exposure electron api
- * @return {*}
- */
-(() => {
-    const { contextBridge, ipcRenderer, remote, shell } = require('electron');
-    contextBridge.exposeInMainWorld('electron', {
-        ipcRenderer,
-        remote,
-        shell,
-        isElectron: true
-    });
-})();
+// /**
+//  * @description: exposure electron api
+//  * @return {*}
+//  */
+// (() => {
+//     const { contextBridge, ipcRenderer, remote, shell } = require('electron');
+//     contextBridge.exposeInMainWorld('electron', {
+//         ipcRenderer,
+//         remote,
+//         shell,
+//         isElectron: true
+//     });
+// })();
 

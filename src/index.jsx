@@ -14,6 +14,7 @@ import PrimaryLayout from './layout/primary-layout';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
 
 import './index.less';
+import { initAppData } from './utils';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +27,8 @@ root.render(
         </HashRouter>
     </React.StrictMode>
 );
+
+initAppData();
 
 // Webpack Hot Module Replacement API
 if (module?.hot) {
