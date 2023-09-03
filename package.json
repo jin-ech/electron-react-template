@@ -6,10 +6,22 @@
   "description": "这是一个app",
   "main": "app.js",
   "homepage": "./",
+  "scripts": {
+    "client": "node scripts/start.js",
+    "electron": "electron ./app.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "start": "concurrently --kill-others-on-fail \"npm run client\" \"electron ./app\"",
+    "build-32": "npm run build && electron-builder --win --ia32",
+    "build-64": "npm run build && electron-builder --win --x64",
+    "build-linux": "npm run build && electron-builder --linux",
+    "build-mac": "npm run build && electron-builder --mac"
+  },
   "build": {
     "productName": "app",
     "appId": "appIdxxxxx",
     "copyright": "Copyright © 2023 power by jinech",
+    "asar": "true",
     "directories": {
       "buildResources": "static",
       "output": "release"
@@ -27,6 +39,7 @@
       "preload.js"
     ],
     "win": {
+      "icon": "./build/favicon.png",
       "target": [
         {
           "target": "nsis",
@@ -59,7 +72,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "shortcutName"
+      "shortcutName": "electron-react-template"
     }
   },
   "dependencies": {
@@ -135,17 +148,6 @@
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^6.4.1"
-  },
-  "scripts": {
-    "client": "node scripts/start.js",
-    "electron": "electron ./app.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "start": "concurrently --kill-others-on-fail \"npm run client\" \"electron ./app\"",
-    "build-32": "npm run build && electron-builder --win --ia32",
-    "build-64": "npm run build && electron-builder --win --x64",
-    "build-linux": "npm run build && electron-builder --linux",
-    "build-mac": "npm run build && electron-builder --mac"
   },
   "eslintConfig": {
     "extends": [
