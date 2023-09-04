@@ -35,7 +35,6 @@ function createWindow() {
     Menu.setApplicationMenu(menu);
 
     // and load the index.html of the app.
-    // mainWindow.loadURL('http://localhost:3000');
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, './build/index.html')}`)
 
     if (isDev) {
@@ -62,17 +61,17 @@ ipcMain.on('getAppData', (event) => {
 app.whenReady().then(() => {
     createWindow();
     // // 向客户端插入 JavaScript 代码
-    // // const appPath = path.resolve(`${apsrPath}`, '..');
     // rootWindow.webContents.executeJavaScript(`
-    //     console.log('appPath: ', '${path.dirname(app.getAppPath())}');
-    //     localStorage.setItem('appPath', '${path.dirname(app.getAppPath())}');
+    //     console.log('this is a log');
     // `);
-    globalShortcut.register('Alt+CommandOrControl+I', () => {
-        rootWindow.webContents.openDevTools();
-    });
-    globalShortcut.register('CommandOrControl+R', () => {
-        rootWindow.webContents.reload();
-    });
+    if (isDev) {
+        globalShortcut.register('Alt+CommandOrControl+I', () => {
+            rootWindow.webContents.openDevTools();
+        });
+        globalShortcut.register('CommandOrControl+R', () => {
+            rootWindow.webContents.reload();
+        });
+    }
 
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
