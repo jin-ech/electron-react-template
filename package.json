@@ -35,11 +35,12 @@
     "files": [
       "!**/node_modules/**/*",
       "build/**/*",
-      "app.js",
-      "preload.js"
+      "public/**/*",
+      "mainProcess/*",
+      "app.js"
     ],
     "win": {
-      "icon": "./build/favicon.png",
+      "icon": "./build/favicon.ico",
       "target": [
         {
           "target": "nsis",
@@ -50,6 +51,7 @@
       ]
     },
     "dmg": {
+      "icon": "./build/favicon.ico",
       "contents": [
         {
           "x": 0,
@@ -59,10 +61,10 @@
       ]
     },
     "linux": {
-      "icon": "xxx/icon.ico"
+      "icon": "./build/favicon.ico"
     },
     "mac": {
-      "icon": "xxx/icon.ico"
+      "icon": "./build/favicon.ico"
     },
     "nsis": {
       "oneClick": false,
