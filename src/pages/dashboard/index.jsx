@@ -10,13 +10,21 @@
 import React from 'react';
 
 import { Button } from 'antd';
+const electron = window.require('electron');
 
 import styles from './index.module.less';
 
-const Dashboard = () => (
-    <div className={styles.contaner}>
-        <Button type='primary'>click here!</Button>
-    </div>
-);
+const Dashboard = () => {
+
+    const handleClick = () => {
+        electron.ipcRenderer.send('notification', { message: 'Hello Electron React Template!' });
+    };
+
+    return (
+        <div className={styles.contaner}>
+            <Button type='primary' onClick={handleClick}>click here!</Button>
+        </div>
+    );
+};
 
 export default Dashboard;

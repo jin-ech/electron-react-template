@@ -1,5 +1,5 @@
 
-const { app, ipcMain } = require('electron')
+const { app, ipcMain, Notification } = require('electron')
 const path = require('path');
 
 module.exports = win => {
@@ -13,8 +13,15 @@ module.exports = win => {
         // 发送应用程序根路径给渲染进程
         event.reply('appData', { appRootPath });
     });
+
+    ipcMain.on('notification', (_, args) => {
+        new Notification({
+            title: 'info',
+            body: args.message
+        }).show();
+    });
     
-    app.on('activate', function () {
+    app.on('activate', () => {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) {
