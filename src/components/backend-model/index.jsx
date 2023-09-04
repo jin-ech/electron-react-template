@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 21:47:27
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-03 21:57:18
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-04 15:01:12
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
  * @Description: 背景模型
  */
@@ -43,21 +43,25 @@ const BackModel = () => {
         return;
     }
 
+    const orbitControlsProps = {
+        target: targetPosition,
+        minDistance: 2,
+        maxDistance: 20,
+        // 垂直
+        minPolarAngle: Math.PI * (45 / 180),
+        maxPolarAngle: Math.PI * (135 / 180),
+        // 水平
+        // minAzimuthAngle: -Math.PI * (120 / 180),
+        // maxAzimuthAngle: Math.PI * (120 / 180),
+        rotateSpeed: 0.3
+    };
+
     return (
         <Suspense fallback={<FallbackLoading />}>
             <Canvas style={{ width: '100vw', height: '100vh' }}>
                 <ambientLight intensity={4} color="#fff" />
                 <Model url={url} />
-                <OrbitControls
-                    target={targetPosition}
-                    minDistance={2}
-                    maxDistance={20}
-                    minPolarAngle={0}
-                    maxPolarAngle={Math.PI / 2}
-                    minAzimuthAngle={-Math.PI * (120 / 180)}
-                    maxAzimuthAngle={Math.PI * (120 / 180)}
-                    rotateSpeed={0.3}
-                />
+                <OrbitControls {...orbitControlsProps} />
             </Canvas>
         </Suspense>
     );

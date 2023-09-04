@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-04 14:50:49
+ * @LastEditTime: 2023-09-04 15:02:48
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -28,7 +28,7 @@ const createWindow = () => {
             preload: path.join(__dirname, './mainProcess/preload.js'),
             nodeIntegration: true,
             contextIsolation: false,
-            contentSecurityPolicy: "default-src 'self'; script-src 'self';"
+            contentSecurityPolicy: "default-src 'self'"
         }
     });
 
