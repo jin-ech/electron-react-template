@@ -39,11 +39,6 @@ const createWindow = () => {
     // 加载app内容
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, './build/index.html')}`)
 
-    // 开发环境默认打开控制台
-    if (isDev) {
-        mainWindow.webContents.openDevTools();;
-    }
-
     return mainWindow;
 }
 
@@ -51,9 +46,11 @@ app.whenReady().then(() => {
     const win = createWindow();
     // 注册自定义事件
     registerEvent(win);
-    // 开发环境注册快捷键
     if (isDev) {
+        // 开发环境注册快捷键
         registerCommand(win);
+        // 开发环境默认打开控制台
+        win.webContents.openDevTools();;
     }
 });
 

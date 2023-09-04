@@ -4,7 +4,7 @@
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
  * @LastEditTime: 2023-09-04 15:01:12
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
- * @Description: 背景模型
+ * @Description: 背景模型贴图
  */
 
 import React, { Suspense, useRef } from 'react';
@@ -13,15 +13,14 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
-import useLoaderUrl from '@/hooks/useLoaderUrl';
 import FallbackLoading from '../fallback-loading';
+import { getStaticPath } from '@/utils';
 
 const targetPosition = [0, 0, 0];
+const staticPath = '/static/models/free_-_skybox_cliffside/scene.gltf';
 
-const Model = ({
-    url
-}) => {
-    const gltf = useLoader(GLTFLoader, url);
+const Model = () => {
+    const gltf = useLoader(GLTFLoader, getStaticPath(staticPath));
     const groupRef = useRef();
 
     useFrame(() => {
@@ -33,15 +32,9 @@ const Model = ({
             <primitive object={gltf.scene} />
         </group>
     );
-}
+};
 
-const staticPath = '/static/models/free_-_skybox_cliffside/scene.gltf';
 const BackModel = () => {
-    const { url } = useLoaderUrl(staticPath);
-
-    if (!url) {
-        return;
-    }
 
     const orbitControlsProps = {
         target: targetPosition,
@@ -60,7 +53,7 @@ const BackModel = () => {
         <Suspense fallback={<FallbackLoading />}>
             <Canvas style={{ width: '100vw', height: '100vh' }}>
                 <ambientLight intensity={4} color="#fff" />
-                <Model url={url} />
+                <Model />
                 <OrbitControls {...orbitControlsProps} />
             </Canvas>
         </Suspense>
