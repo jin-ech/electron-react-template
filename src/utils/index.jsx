@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:14:32
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-03 21:27:51
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-05 09:39:09
  * @FilePath: \electron-react-template\src\utils\index.jsx
  * @Description: 工具包
  */
@@ -38,10 +38,10 @@ export const getStaticPath = path => {
  * @return {*}
  */
 export const initAppData = () => {
-    ipcRenderer.send('getAppData');
+    ipcRenderer.send('client-getAppData');
 
     return new Promise(resolve => {
-        ipcRenderer.on('appData', (_, data) => {
+        ipcRenderer.on('main-appData', (_, data) => {
             localStorage.setItem('appPath', data.appRootPath);
             resolve(data);
         });
