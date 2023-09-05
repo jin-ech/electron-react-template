@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-05 11:17:34
+ * @LastEditTime: 2023-09-05 14:41:32
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -30,7 +30,7 @@ const createWindow = () => {
         height: 780,
         frame: false,
         webPreferences: {
-            preload: path.join(__dirname, './mainProcess/preload.js'),
+            preload: path.join(__dirname, './process/preload.js'),
             nodeIntegration: true,
             contextIsolation: false,
             contentSecurityPolicy: "default-src 'self'"
@@ -57,12 +57,12 @@ app.whenReady().then(() => {
             registerCommand(win);
             // 默认打开控制台
             win.webContents.openDevTools();;
-            // 开启网关代理
-            createProxyService(win);
             // 热更新模块
             require('electron-reloader')(module);
             // 自启动模块
             selfStartingModule({ win, host, port: PORT });
+            // 开启网关代理
+            // createProxyService(win);
         }
         catch (_) {}
     }

@@ -4,7 +4,12 @@ const commands = [
     {
         command: 'Alt+CommandOrControl+I',
         task: win => {
-            win.webContents.openDevTools();
+            if (win.webContents.isDevToolsOpened()) {
+                win.webContents.closeDevTools();
+            }
+            else {
+                win.webContents.openDevTools();
+            }
         }
     },
     {
