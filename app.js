@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-05 10:24:48
+ * @LastEditTime: 2023-09-05 10:44:10
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -12,10 +12,10 @@ const path = require('path');
 
 const isDev = !app.isPackaged;
 
-const createProxyService = require('./mainProcess/createProxyService');
-const registerEvent = require('./mainProcess/registerEvent');
-const registerCommand = require('./mainProcess/registerCommand');
-const selfStartingModule = require('./mainProcess/selfStartingModule');
+const createProxyService = require('./process/createProxyService');
+const registerEvent = require('./process/registerEvent');
+const registerCommand = require('./process/registerCommand');
+const selfStartingModule = require('./process/selfStartingModule');
 
 const createWindow = () => {
     // 创建主窗口
