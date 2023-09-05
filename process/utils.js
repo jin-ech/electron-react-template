@@ -1,7 +1,14 @@
 
 module.exports = {
-    getConfigSync: async (path) => {
-        // TODO
+    getClientEnvironment: isDev => {
+        // const dotenv = require('dotenv');
+        // const result = dotenv.config({ path: `.env.${isDev ? 'development' : 'production'}` });
+        // if (result.error) {
+        //     console.error('an error occured on get client environment: ', result.error);
+        //     return {};
+        // }
+        // return result.parsed || {};
+        return {};
     },
     consoleLog: (message, color) => {
         const colors = {

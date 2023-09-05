@@ -36,8 +36,8 @@
       "!**/node_modules/**/*",
       "build/**/*",
       "public/**/*",
-      "mainProcess/*",
-      "app.js"
+      "app.js",
+      "process/*"
     ],
     "win": {
       "icon": "./build/favicon.ico",
@@ -102,7 +102,7 @@
     "cors": "^2.8.5",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.2.0",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.3.1",
     "dotenv-expand": "^5.1.0",
     "electron-is": "^3.0.0",
     "electron-packager": "^17.1.2",

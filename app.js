@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-05 10:44:10
+ * @LastEditTime: 2023-09-05 11:17:34
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -10,12 +10,16 @@
 const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path');
 
-const isDev = !app.isPackaged;
-
 const createProxyService = require('./process/createProxyService');
 const registerEvent = require('./process/registerEvent');
 const registerCommand = require('./process/registerCommand');
 const selfStartingModule = require('./process/selfStartingModule');
+const { getClientEnvironment, getLocalIpAddress } = require('./process/utils');
+
+const isDev = !app.isPackaged;
+const env = getClientEnvironment(isDev);
+const host = getLocalIpAddress() || 'localhost';
+const PORT = env.PORT || 3000;
 
 const createWindow = () => {
     // 创建主窗口
@@ -38,7 +42,7 @@ const createWindow = () => {
     Menu.setApplicationMenu(menu);
 
     // 加载app内容
-    mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, './build/index.html')}`)
+    mainWindow.loadURL(isDev ? `http://${host}:${PORT}` : `file://${path.join(__dirname, './build/index.html')}`)
 
     return mainWindow;
 }
@@ -58,7 +62,7 @@ app.whenReady().then(() => {
             // 热更新模块
             require('electron-reloader')(module);
             // 自启动模块
-            selfStartingModule({ win });
+            selfStartingModule({ win, host, port: PORT });
         }
         catch (_) {}
     }
