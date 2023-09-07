@@ -3,7 +3,7 @@ module.exports = (args = {}, _next) => {
     const http = require('http');
     const { getLocalIpAddress, consoleLog } = require('./utils');
     const { host = getLocalIpAddress(), port = 3000, win } = args;
-    const timeout = 2000;
+    const timeout = 1500;
 
     const checkAddressAvailability = (url, timeout) => {
         return new Promise((resolve, reject) => {
@@ -13,19 +13,14 @@ module.exports = (args = {}, _next) => {
                 const $clearInterval = () => {
                     clearInterval(intervalTimer);
                     intervalTimer = null;
-                    resolve(false);
                 };
-
-                win.once('ready-to-show', () => {
-                    $clearInterval();
-                });
 
                 const timerTask = () => {
                     http.get(url, res => {
-                        $clearInterval();
                         if (res.statusCode === 200) {
                             consoleLog('client serve validate success', 'green');
-                            resolve(true);
+                            $clearInterval();
+                            resolve();
                         }
                     }).on('error', () => {
                         consoleLog('client serve validating...', 'blue');
@@ -41,10 +36,8 @@ module.exports = (args = {}, _next) => {
 
     const url = `http:${host}:${port}`;
     checkAddressAvailability(url, timeout)
-        .then(isValidate => {
-            if (isValidate) {
-                win.webContents.reload();
-            }
+        .then(() => {
+            win.webContents.reload();
         })
         .catch((error) => {
             console.error('error occurred while checking address accessibility:', error);
