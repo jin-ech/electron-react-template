@@ -1,8 +1,8 @@
 
-const { app, ipcMain, Notification } = require('electron')
-const path = require('path');
 
-module.exports = win => {
+module.exports = ({ win, app, ipcMain }, next) => {
+    const { Notification } = require('electron');
+    const path = require('path');
 
     // 客户端加载完毕
     win.webContents.on('did-finish-load', () => {
@@ -40,4 +40,5 @@ module.exports = win => {
             app.quit();
         }
     });
+    next();
 };

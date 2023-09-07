@@ -2,19 +2,20 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-05 14:41:32
+ * @LastEditTime: 2023-09-07 10:32:10
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
 
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
-const createProxyService = require('./process/createProxyService');
-const registerEvent = require('./process/registerEvent');
-const registerCommand = require('./process/registerCommand');
-const selfStartingModule = require('./process/selfStartingModule');
-const { getClientEnvironment, getLocalIpAddress } = require('./process/utils');
+const AppGenerator = require('./process/appGgenerator');
+// const createProxyService = require('./process/createProxyService');
+const eventMiddleWare = require('./middleware/eventMiddleWare');
+const commandMiddleWare = require('./middleware/commandMiddleWare');
+const selftStartMiddleWare = require('./middleware/selfStartMiddleWare');
+const { getClientEnvironment, getLocalIpAddress } = require('./middleware/utils');
 
 const isDev = !app.isPackaged;
 const env = getClientEnvironment(isDev);
@@ -49,21 +50,23 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
     const win = createWindow();
-    // 注册自定义事件
-    registerEvent(win);
+    const $app = AppGenerator.getInstance({
+        win,
+        isDev,
+        port: PORT,
+        host
+    });
+    // 注册事件
+    $app.use(eventMiddleWare);
     if (isDev) {
-        try {
-            // 注册快捷键
-            registerCommand(win);
-            // 默认打开控制台
-            win.webContents.openDevTools();;
-            // 热更新模块
-            require('electron-reloader')(module);
-            // 自启动模块
-            selfStartingModule({ win, host, port: PORT });
-            // 开启网关代理
-            // createProxyService(win);
-        }
-        catch (_) {}
+        // 注册快捷键
+        $app.use(commandMiddleWare);
+        // 自启动 & 热更新模块
+        $app.use(selftStartMiddleWare);
+        // 开启网关代理
+        // $app.use(createProxyService);
+        // 默认打开控制台
+        win.webContents.openDevTools();
     }
+    $app.exec();
 });

@@ -1,8 +1,9 @@
-const http = require('http');
-const { getLocalIpAddress, consoleLog } = require('./utils');
 
-module.exports = (args = {}) => {
-    const { host = getLocalIpAddress(), port = 3000, timeout = 1500, win } = args;
+module.exports = (args = {}, _next) => {
+    const http = require('http');
+    const { getLocalIpAddress, consoleLog } = require('./utils');
+    const { host = getLocalIpAddress(), port = 3000, win } = args;
+    const timeout = 1500;
 
     const checkAddressAvailability = (url, timeout) => {
         return new Promise((resolve, reject) => {
@@ -36,4 +37,6 @@ module.exports = (args = {}) => {
         .catch((error) => {
             console.error('error occurred while checking address accessibility:', error);
         });
+
+    require('electron-reloader')(module);
 };

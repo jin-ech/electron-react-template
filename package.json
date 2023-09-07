@@ -37,7 +37,8 @@
       "build/**/*",
       "public/**/*",
       "app.js",
-      "process/*"
+      "process/*",
+      "middleware/*"
     ],
     "win": {
       "icon": "./build/favicon.ico",
