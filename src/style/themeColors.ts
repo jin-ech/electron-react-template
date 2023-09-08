@@ -8,7 +8,11 @@
  * 'Description: 自定义less变量
  */
 
-export default {
+import { ThemeConfig } from 'antd/es/config-provider/context';
+
+const themeConfig: ThemeConfig['token'] = {
     // 主题色
-    'colorPrimary': '#262626',
+    colorPrimary: '#000'
 };
+
+export default themeConfig;

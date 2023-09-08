@@ -79,6 +79,7 @@
     }
   },
   "dependencies": {
+    "@ant-design/colors": "^7.0.0",
     "@ant-design/icons": "^5.2.6",
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
