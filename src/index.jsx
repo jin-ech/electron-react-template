@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 16:37:44
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-08 10:47:29
+ * @LastEditTime: 2023-09-08 11:04:09
  * @FilePath: \electron-react-template\src\index.js
  * @Description: 客户端程序入口
  */
@@ -14,7 +14,7 @@ import PrimaryLayout from './layout/primary-layout';
 import { ConfigProvider as AntdConfigProvider, theme } from 'antd';
 import { initAppData } from './utils';
 
-import themeColors from '@/style/lessVariables';
+import themeColors from './style/themeColors';
 
 import './index.less';
 
