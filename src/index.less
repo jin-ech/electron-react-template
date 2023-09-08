@@ -7,10 +7,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  > * {
+  
+  .scrollbar(#000, rgba(#000, .8));
+  >* {
     user-select: none;
+    .scrollbar(#000, rgba(#000, .8));
   }
 }
+
+#root {}

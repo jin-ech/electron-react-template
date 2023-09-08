@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-07 11:03:59
+ * @LastEditTime: 2023-09-08 18:18:51
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -28,7 +28,9 @@ const createWindow = () => {
         title: 'electron-react-template',
         icon: path.join(__dirname, './public/favicon.ico'),
         width: 1200,
+        minWidth: 980,
         height: 780,
+        minHeight: 572,
         frame: false,
         webPreferences: {
             preload: path.join(__dirname, './process/preload.js'),
