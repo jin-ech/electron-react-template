@@ -8,6 +8,8 @@
  */
 
 module.exports = {
+    // 主题色
+    'colorPrimary': '#262626',
     // 'primary-color': '#1890ff',
     'primary-color': '#1677ff',
     'link-color': '#1677ff', // 链接色

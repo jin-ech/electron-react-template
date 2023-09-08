@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "electron-react-template",
   "version": "0.1.0",
   "private": true,
   "author": "jinech",
@@ -18,7 +18,7 @@
     "build-mac": "npm run build && electron-builder --mac"
   },
   "build": {
-    "productName": "app",
+    "productName": "electron-react-template",
     "appId": "appIdxxxxx",
     "copyright": "Copyright © 2023 power by jinech",
     "asar": "true",

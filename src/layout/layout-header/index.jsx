@@ -39,6 +39,7 @@ const LayoutHeader = () => {
 
     return (
         <div className={styles.container}>
+            <div className={styles.logo}></div>
             <Menu
                 className={styles.menu}
                 style={{ background: 'transparent' }}
