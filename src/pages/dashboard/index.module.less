@@ -1,8 +1,43 @@
-
 .container {
-    .link {
-        display: block;
-        color: @primary-color;
-        margin-top: 12px;
+
+    .center {
+        @item-width: 320px;
+        @item-height: 180px;
+        position: fixed;
+        width: @item-width;
+        height: @item-height;
+        left: calc((100% - @item-width) / 2);
+        top: calc((100% - @item-height) / 2);
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logo {
+            width: 72px;
+            height: 72px;
+            .bg;
+            background-image: url(/public/static/icons/logo.png);
+            animation: rotation 6s linear infinite;
+            @keyframes rotation {
+                from {
+                    transform: rotateY(0)
+                }
+
+                to {
+                    transform: rotateY(360deg);
+                }
+            }
+        }
+
+        button {
+            display: block;
+            margin: 12px 0;
+        }
+
+        .link {
+            display: block;
+            color: @primary-color;
+        }
     }
 }

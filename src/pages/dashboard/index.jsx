@@ -23,12 +23,15 @@ const Dashboard = () => {
 
     return (
         <div className={styles.container}>
-            <Button type='primary' onClick={handleClick}>click here!</Button>
-            <a
-                href={'https://www.electronjs.org/zh/docs/latest/api/app'}
-                target='_blank'
-                className={styles.link}
-            >https://www.electronjs.org/zh/docs/latest/api/app</a>
+            <div className={styles.center}>
+                <div className={styles.logo}></div>
+                <Button type='primary' onClick={handleClick}>click here!</Button>
+                <a
+                    href={'https://www.electronjs.org/zh/docs/latest/api/app'}
+                    target='_blank'
+                    className={styles.link}
+                >https://www.electronjs.org/zh/docs/latest/api/app</a>
+            </div>
         </div>
     );
 };
