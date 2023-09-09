@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:33:49
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:35:50
+ * @LastEditTime: 2023-09-09 19:47:44
  * @FilePath: \electron-react-template\src\pages\dashboard\index.jsx
  * @Description: 首屏
  */
@@ -35,7 +35,7 @@ const Dashboard = () => {
                 <a
                     className={styles.link}
                     onClick={handleOpenDoc}
-                >https://www.electronjs.org/zh/docs/latest/api/app</a>
+                >https://www.electronjs.org/zh/</a>
             </div>
         </div>
     );
