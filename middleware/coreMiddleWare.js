@@ -2,14 +2,14 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 19:14:53
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:32:13
+ * @LastEditTime: 2023-09-09 19:41:41
  * @FilePath: \electron-react-template\middleware\coreMiddleWare.js
  * @Description: 基础&核心功能注册
  */
 
 const { Menu, Tray, shell } = require("electron");
 
-module.exports = ({ app, isDev }, next) => {
+module.exports = ({ app, isDev, win }, next) => {
 
     // 隐藏菜单
     const menu = Menu.buildFromTemplate([]);
@@ -23,6 +23,12 @@ module.exports = ({ app, isDev }, next) => {
     ])
     tray.setToolTip('electron-react-template');
     tray.setContextMenu(contextMenu);
+
+    tray.on('double-click', () => {
+        if (!win.isVisible()) {
+            win.show();
+        }
+    });
 
     next();
 };

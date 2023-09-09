@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 18:29:16
+ * @LastEditTime: 2023-09-09 19:45:16
  * @FilePath: \electron-react-template\middleware\eventMiddleWare.js
  * @Description: 事件注册插件
  */
@@ -28,7 +28,7 @@ module.exports = ({ win, app, ipcMain }, next) => {
     });
 
     ipcMain.on('close', () => {
-        win.close();
+        win.hide();
     });
 
     ipcMain.on('minimize', () => {
@@ -66,9 +66,9 @@ module.exports = ({ win, app, ipcMain }, next) => {
     });
 
     app.on('window-all-closed', function () {
-        if (process.platform !== 'darwin') {
-            app.quit();
-        }
+        // if (process.platform !== 'darwin') {
+        //     app.quit();
+        // }
     });
     next();
 };

@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:16:56
+ * @LastEditTime: 2023-09-09 19:42:43
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -23,7 +23,7 @@ const env = getClientEnvironment(isDev);
 const host = getLocalIpAddress() || 'localhost';
 const PORT = env.PORT || 3000;
 
-const createWindow = () => {
+const createMainWindow = () => {
     // 创建主窗口
     const mainWindow = new BrowserWindow({
         title: 'electron-react-template',
@@ -43,12 +43,11 @@ const createWindow = () => {
 
     // 加载app内容
     mainWindow.loadURL(isDev ? `http://${host}:${PORT}` : `file://${path.join(__dirname, './build/index.html')}`)
-
     return mainWindow;
 }
 
 app.whenReady().then(() => {
-    const win = createWindow();
+    const win = createMainWindow();
     const $app = AppGenerator.getInstance({
         win,
         isDev,
