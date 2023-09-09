@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 18:38:57
+ * @LastEditTime: 2023-09-09 21:34:29
  * @FilePath: \electron-react-template\middleware\commandMiddleWare.js
  * @Description: 快捷键注册插件
  */
