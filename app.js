@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:42:43
+ * @LastEditTime: 2023-09-09 20:42:07
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -22,6 +22,8 @@ const isDev = !app.isPackaged;
 const env = getClientEnvironment(isDev);
 const host = getLocalIpAddress() || 'localhost';
 const PORT = env.PORT || 3000;
+const preloadPath = './public/loading.html';
+const prodPath = `file://${path.join(__dirname, './build/index.html')}`;
 
 const createMainWindow = () => {
     // 创建主窗口
@@ -40,9 +42,8 @@ const createMainWindow = () => {
             contentSecurityPolicy: "default-src 'self'"
         }
     });
-
     // 加载app内容
-    mainWindow.loadURL(isDev ? `http://${host}:${PORT}` : `file://${path.join(__dirname, './build/index.html')}`)
+    isDev ? mainWindow.loadFile(preloadPath) : mainWindow.loadURL(prodPath);
     return mainWindow;
 }
 

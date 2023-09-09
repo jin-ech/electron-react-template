@@ -1,3 +1,11 @@
+/*
+ * @Author: JC96821 13478707150@163.com
+ * @Date: 2023-09-09 15:17:37
+ * @LastEditors: JC96821 13478707150@163.com
+ * @LastEditTime: 2023-09-09 20:21:26
+ * @FilePath: \electron-react-template\middleware\selfStartMiddleWare.js
+ * @Description: 自启动模块(仅开发环境启用)
+ */
 
 module.exports = (args = {}, _next) => {
     const http = require('http');
@@ -37,7 +45,7 @@ module.exports = (args = {}, _next) => {
     const url = `http:${host}:${port}`;
     checkAddressAvailability(url, timeout)
         .then(() => {
-            win.webContents.reload();
+            win.webContents.loadURL(`http://${host}:${port}`);
         })
         .catch((error) => {
             console.error('error occurred while checking address accessibility:', error);
