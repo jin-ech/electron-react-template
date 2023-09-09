@@ -7,16 +7,19 @@
     box-sizing: border-box;
     padding: 0 12px;
 
-    .logo {
-        width: 24px;
-        height: 24px;
-        .bg;
-        background-image: url(/public/static/icons/logo.png);
-    }
-
-    .menu {
+    .left {
         width: 320px;
-        -webkit-app-region: no-drag;
+        display: flex;
+        align-items: center;
+        .logo {
+            width: 24px;
+            height: 24px;
+            .bg;
+            background-image: url(/public/static/icons/logo.png);
+        }
+        .title {
+            margin-left: 12px;
+        }
     }
 
     .center {
