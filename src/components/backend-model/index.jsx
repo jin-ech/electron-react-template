@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 21:47:27
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 18:44:55
+ * @LastEditTime: 2023-09-09 19:01:21
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
  * @Description: 背景模型贴图
  */
@@ -37,8 +37,8 @@ const Model = () => {
 const orbitControlsProps = {
     target: targetPosition,
     // 垂直
-    // minPolarAngle: Math.PI * (45 / 180),
-    // maxPolarAngle: Math.PI * (135 / 180),
+    minPolarAngle: Math.PI * (45 / 180),
+    maxPolarAngle: Math.PI * (135 / 180),
     // 水平
     // minAzimuthAngle: -Math.PI * (120 / 180),
     // maxAzimuthAngle: Math.PI * (120 / 180),
