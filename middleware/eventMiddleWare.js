@@ -1,4 +1,11 @@
-
+/*
+ * @Author: JC96821 13478707150@163.com
+ * @Date: 2023-09-09 15:17:37
+ * @LastEditors: JC96821 13478707150@163.com
+ * @LastEditTime: 2023-09-09 18:29:16
+ * @FilePath: \electron-react-template\middleware\eventMiddleWare.js
+ * @Description: 事件注册插件
+ */
 
 module.exports = ({ win, app, ipcMain }, next) => {
     const { Notification } = require('electron');
@@ -39,7 +46,7 @@ module.exports = ({ win, app, ipcMain }, next) => {
     // 处理渲染进程发送的请求
     ipcMain.on('client-getAppData', event => {
         const appRootPath = path.dirname(app.getAppPath('exe'));
-        // 发送应用程序根路径给渲染进程
+        // 发送应用程序信息给渲染进程
         event.reply('main-appData', { appRootPath });
     });
 

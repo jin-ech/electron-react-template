@@ -19,7 +19,7 @@ export const isDev = process.env.NODE_ENV === 'development';
  * @description: 获取App文件绝对路径
  * @return {*}
  */
-export const getAppPath = () => localStorage.getItem('appPath');
+export const getAppPath = () => process.resourcesPath;
 
 /**
  * @description: 获取静态文件路径

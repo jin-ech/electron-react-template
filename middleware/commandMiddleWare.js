@@ -1,8 +1,16 @@
+/*
+ * @Author: JC96821 13478707150@163.com
+ * @Date: 2023-09-09 15:17:37
+ * @LastEditors: JC96821 13478707150@163.com
+ * @LastEditTime: 2023-09-09 18:38:57
+ * @FilePath: \electron-react-template\middleware\commandMiddleWare.js
+ * @Description: 快捷键注册插件
+ */
 
 module.exports = ({ win, globalShortcut }, next) => {
     const commands = [
         {
-            command: 'Alt+CommandOrControl+I',
+            command: 'CommandOrControl+F12',
             task: win => {
                 if (win.webContents.isDevToolsOpened()) {
                     win.webContents.closeDevTools();
