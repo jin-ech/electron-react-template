@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:33:49
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 18:35:29
+ * @LastEditTime: 2023-09-09 19:35:50
  * @FilePath: \electron-react-template\src\pages\dashboard\index.jsx
  * @Description: 首屏
  */
@@ -24,7 +24,7 @@ const Dashboard = () => {
     };
     
     const handleOpenDoc = () => {
-        electron.shell.openExternal('https://www.electronjs.org/zh/docs/latest/api/app');
+        electron.shell.openExternal('https://www.electronjs.org/zh/');
     };
 
     return (
