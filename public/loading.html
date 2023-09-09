@@ -72,6 +72,7 @@
             position: relative;
             display: inline;
         }
+
         .extra::after {
             position: absolute;
             top: 0;
@@ -94,12 +95,15 @@
             0% {
                 content: "";
             }
+
             33% {
                 content: ".";
             }
+
             66% {
                 content: "..";
             }
+
             100% {
                 content: "...";
             }
@@ -113,7 +117,7 @@
     <div id="root">
         <div class="loading"></div>
         <div class="info">
-            客户端启动中
+            the client service is starting.
             <div class="extra"></div>
         </div>
     </div>
