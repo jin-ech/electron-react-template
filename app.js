@@ -2,15 +2,16 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 18:55:05
+ * @LastEditTime: 2023-09-09 19:16:56
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
 
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 const AppGenerator = require('./process/appGgenerator');
+const coreMiddleWare = require('./middleware/coreMiddleWare');
 // const createProxyService = require('./process/createProxyService');
 const eventMiddleWare = require('./middleware/eventMiddleWare');
 const commandMiddleWare = require('./middleware/commandMiddleWare');
@@ -40,10 +41,6 @@ const createWindow = () => {
         }
     });
 
-    // 隐藏菜单
-    const menu = Menu.buildFromTemplate([]);
-    Menu.setApplicationMenu(menu);
-
     // 加载app内容
     mainWindow.loadURL(isDev ? `http://${host}:${PORT}` : `file://${path.join(__dirname, './build/index.html')}`)
 
@@ -58,6 +55,8 @@ app.whenReady().then(() => {
         port: PORT,
         host
     });
+    // 基础&核心功能注册
+    $app.use(coreMiddleWare);
     // 注册事件
     $app.use(eventMiddleWare);
     if (isDev) {
