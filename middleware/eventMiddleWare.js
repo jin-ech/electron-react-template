@@ -9,8 +9,31 @@ module.exports = ({ win, app, ipcMain }, next) => {
         // TODO
     });
 
-    ipcMain.on('close', (event, arg) => {
+    // 监听来自渲染进程的事件
+    ipcMain.on('resize-request', event => {
+        const isMaximized = win.isMaximized();
+        event.sender.send('window-resize', isMaximized);
+    });
+
+    win.on('resize', () => {
+        const isMaximized = win.isMaximized();
+        win.webContents.send('window-resize', isMaximized);
+    });
+
+    ipcMain.on('close', () => {
         win.close();
+    });
+
+    ipcMain.on('minimize', () => {
+        win.minimize();
+    });
+
+    ipcMain.on('maximize', () => {
+        win.maximize();
+    });
+
+    ipcMain.on('unmaximize', () => {
+        win.unmaximize();
     });
 
     // 处理渲染进程发送的请求

@@ -31,11 +31,47 @@
         width: 320px;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
+
         .icon {
             padding: 12px;
             cursor: pointer;
             -webkit-app-region: no-drag;
             color: #fff;
+            margin-left: 4px;
+        }
+
+        .maximize {
+            padding: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+            border: 1px solid #eaeaea;
+            margin-left: 16px;
+        }
+        
+        .unmaximize {
+            padding: 0;
+            width: 16px;
+            height: 16px;
+            margin-left: 16px;
+            .bg;
+            background-image: url(/public/static/icons/unmaximize.svg);
+        }
+
+        .minimize {
+            width: 14px;
+            height: 12px;
+            position: relative;
+            &::after {
+                content: "";
+                width: 14px;
+                height: 1px;
+                background-color: #fff;
+                position: absolute;
+                top: calc((100% - 1px) / 2);
+                left: calc((100% - 14px) / 2);
+            }
         }
     }
 

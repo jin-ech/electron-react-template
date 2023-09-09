@@ -8,6 +8,7 @@
  */
 
 import React, { useEffect, useMemo, useState } from 'react';
+import cls from 'classnames';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'antd';
@@ -15,16 +16,14 @@ import { CloseOutlined } from '@ant-design/icons';
 import layoutConfig from '@/configure/layout';
 
 import styles from './index.module.less';
+import useWindowResize from '@/hooks/useWindowResize';
 
 const LayoutHeader = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [selectedKeys, updateSelectedKeys] = useState([]);
 
-    const handleClose = () => {
-        const electron = window.require('electron');
-        electron.ipcRenderer.send('close');
-    };
+    const { isMaximized, onClose, onMinimize, onMaximize, onUnMaximize } = useWindowResize();
 
     useEffect(() => {
         updateSelectedKeys(location.pathname);
@@ -51,7 +50,13 @@ const LayoutHeader = () => {
                 electron-react-template
             </div>
             <div className={styles.right}>
-                <CloseOutlined className={styles.icon} onClick={handleClose} />
+                <div className={cls(styles.icon, styles.minimize)} onClick={onMinimize}></div>
+                {isMaximized ? (
+                    <div className={cls(styles.icon, styles.unmaximize)} onClick={onUnMaximize}></div>
+                ) : (
+                    <div className={cls(styles.icon, styles.maximize)} onClick={onMaximize}></div>
+                )}
+                <CloseOutlined className={styles.icon} onClick={onClose} />
             </div>
         </div>
     );
