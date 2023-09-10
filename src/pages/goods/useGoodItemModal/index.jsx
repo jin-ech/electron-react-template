@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:30:46
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 19:57:27
+ * @LastEditTime: 2023-09-10 20:38:08
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\index.jsx
  * @Description: 商品详情弹窗
  */
@@ -13,8 +13,9 @@ import { Modal } from 'antd';
 import ModelContent from './modal-content';
 
 import styles from './index.module.less';
+import { LoadingOutlined } from '@ant-design/icons';
 
-const LazyModel = ({ visible }) => {
+const LazyModel = ({ visible, ...props }) => {
     const [showComponent, setShowComponent] = useState(false);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const LazyModel = ({ visible }) => {
         }
         const timer = setTimeout(() => {
             setShowComponent(true);
-        }, 100);
+        }, 500);
 
         return () => {
             clearTimeout(timer);
@@ -32,9 +33,11 @@ const LazyModel = ({ visible }) => {
     }, [visible]);
 
     return (
-        <div>
-            {showComponent && <ModelContent />}
-        </div>
+        <React.Fragment>
+            {showComponent
+                ? <ModelContent {...props} />
+                : <LoadingOutlined style={{ fontSize: 32, marginLeft: 380 }} />}
+        </React.Fragment>
     );
 };
 
@@ -47,11 +50,6 @@ const useGoodItemModal = () => {
 
     const closeModal = () => {
         updateVisible(false);
-    };
-
-    // 禁用Modal的transform属性
-    const modalRender = () => {
-        return <LazyModel visible={visible} />;
     };
 
     const modalRenderer = useMemo(() => (
@@ -69,7 +67,7 @@ const useGoodItemModal = () => {
             destroyOnClose={false}
             getContainer={el => el}
         >
-            {modalRender()}
+            <LazyModel visible={visible} onCancel={closeModal} />
         </Modal>
     ), [visible]);
 

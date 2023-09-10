@@ -28,7 +28,7 @@
     .toolbar {
         position: absolute;
         right: 0;
-        width: 240px;
+        width: 280px;
 
         .title {
             margin-bottom: 12px;
@@ -58,6 +58,46 @@
 
                 &::after {
                     content: ": ";
+                }
+            }
+
+            button {
+                margin-right: 12px;
+            }
+
+            .buy {
+                position: relative;
+                &:active {
+                    .active;
+                }
+                &::after {
+                    content: "";
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background-color: red;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    transform: scale(0);
+                }
+                .active {
+                    &::after {
+                        opacity: 1;
+                        transform: scale(1);
+                        animation: buy-animation .5s ease-in;
+                        @keyframes buy-animation {
+                            0% {
+                                transform: rotate3d(0, 0, 0) scale(1);
+                            }
+                            50% {
+                                transform: translate3d(-240px, -300px, 0) scale(.8);
+                            }
+                            100% {
+                                transform: translate3d(-980px, -680px, 0) scale(.5);
+                            }
+                        }
+                    }
                 }
             }
         }

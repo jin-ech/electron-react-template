@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 20:00:08
+ * @LastEditTime: 2023-09-10 20:57:39
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -11,18 +11,33 @@ import React, { Suspense, useMemo, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Sphere, useProgress } from '@react-three/drei';
-import { ColorPicker, Progress, Select, Typography } from 'antd';
+import { Button, ColorPicker, Progress, Select, Typography } from 'antd';
 
 import Model, { pointList } from './model';
+import { DollarOutlined } from '@ant-design/icons';
+
+import useUserInfo from '@/hooks/useUserInfo';
 
 import styles from './index.module.less';
 
 const selectList = pointList.map(item => ({ label: item.tooltip, value: JSON.stringify(item.cameraPositon) }));
+const defaultCameraPosition = [2, 2, 5];
 
-const ModelContent = () => {
+const ModelContent = ({
+    onCancel
+}) => {
     const { progress } = useProgress();
     const [color, updateColor] = useState('red');
-    const [cameraPosition, updateCameraPosition] = useState([3, 4, 5])
+    const [cameraPosition, updateCameraPosition] = useState(defaultCameraPosition);
+    const { dispatchAddUserGoods } = useUserInfo();
+
+    const handleBuy = () => {
+        dispatchAddUserGoods({
+            id: 'xxxid',
+            title: 'car',
+            price: '1230.00'
+        });
+    };
 
     const handleSelectChange = pos => {
         updateCameraPosition(JSON.parse(pos));
@@ -60,7 +75,7 @@ const ModelContent = () => {
                     {/* 上 */}
                     <directionalLight intensity={2} color="#fff" position={[0, 4, 0]}></directionalLight>
                     {modalRenderer}
-                    <PerspectiveCamera position={[3, 4, 5]} makeDefault />
+                    <PerspectiveCamera position={defaultCameraPosition} makeDefault />
                     <OrbitControls
                         minPolarAngle={Math.PI * (45 / 180)}
                         maxPolarAngle={Math.PI * (75 / 180)}
@@ -93,6 +108,15 @@ const ModelContent = () => {
                             options={selectList}
                             onChange={handleSelectChange}
                         />
+                    </div>
+                    <div className={styles.row}>
+                        <Button type='text' onClick={onCancel}>Cancel</Button>
+                        <Button
+                            type='text'
+                            className={styles.buy}
+                            icon={<DollarOutlined />}
+                            onClick={handleBuy}
+                        >Buy $303000.00</Button>
                     </div>
                 </div>
             </Suspense>

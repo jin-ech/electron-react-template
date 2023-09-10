@@ -12,14 +12,15 @@
         display: flex;
         align-items: center;
         -webkit-app-region: no-drag;
-        cursor: pointer;
-        
+
         .logo {
             width: 24px;
             height: 24px;
             .bg;
             background-image: url(/public/static/icons/logo.png);
+            cursor: pointer;
         }
+
         .title {
             margin-left: 12px;
         }
@@ -27,10 +28,6 @@
 
     .center {
         flex: 1;
-        color: #FFF;
-        font-size: 14px;
-        text-align: center;
-        font-weight: 500;
     }
 
     .right {
@@ -55,7 +52,7 @@
             border: 1px solid #eaeaea;
             margin-left: 16px;
         }
-        
+
         .unmaximize {
             padding: 0;
             width: 16px;
@@ -69,6 +66,7 @@
             width: 14px;
             height: 12px;
             position: relative;
+
             &::after {
                 content: "";
                 width: 14px;
