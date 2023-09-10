@@ -1,0 +1,11 @@
+Model Information:
+* title:	Aston marten DB11 car
+* source:	https://sketchfab.com/3d-models/aston-marten-db11-car-13f7e811e1bb44af99ee5037c886101b
+* author:	S24frames (https://sketchfab.com/sahandkarwan5)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Aston marten DB11 car" (https://sketchfab.com/3d-models/aston-marten-db11-car-13f7e811e1bb44af99ee5037c886101b) by S24frames (https://sketchfab.com/sahandkarwan5) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
