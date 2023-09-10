@@ -21,6 +21,10 @@ const useWindowResize = () => {
         electron.ipcRenderer.send('close');
     };
 
+    const onHide = () => {
+        electron.ipcRenderer.send('hide');
+    };
+
     useEffect(() => {
         // 监听来自主进程的事件
         electron.ipcRenderer.on('window-resize', (_, isMaximized) => {
@@ -41,7 +45,8 @@ const useWindowResize = () => {
         onMinimize,
         onMaximize,
         onUnMaximize,
-        onClose
+        onClose,
+        onHide
     };
 };
 

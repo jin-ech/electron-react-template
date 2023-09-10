@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:45:16
+ * @LastEditTime: 2023-09-10 11:32:31
  * @FilePath: \electron-react-template\middleware\eventMiddleWare.js
  * @Description: 事件注册插件
  */
@@ -27,8 +27,12 @@ module.exports = ({ win, app, ipcMain }, next) => {
         win.webContents.send('window-resize', isMaximized);
     });
 
-    ipcMain.on('close', () => {
+    ipcMain.on('hide', () => {
         win.hide();
+    });
+
+    ipcMain.on('close', () => {
+        app.quit();
     });
 
     ipcMain.on('minimize', () => {

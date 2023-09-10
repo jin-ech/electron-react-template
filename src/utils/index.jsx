@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:14:32
- * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-05 09:39:09
+ * @LastEditors: JC96821 13478707150@163.com
+ * @LastEditTime: 2023-09-10 11:45:51
  * @FilePath: \electron-react-template\src\utils\index.jsx
  * @Description: 工具包
  */
@@ -47,3 +47,10 @@ export const initAppData = () => {
         });
     });
 };
+
+/**
+ * @description: 枚举转数组
+ * @param {*} obj
+ * @return {*}
+ */
+export const transformObjToArr = (obj = {}) => Object.keys(obj).map(key => ({ key, ...obj[key] }));
