@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:30:46
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 16:54:03
+ * @LastEditTime: 2023-09-10 19:57:27
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\index.jsx
  * @Description: 商品详情弹窗
  */
@@ -11,6 +11,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import { Modal } from 'antd';
 import ModelContent from './modal-content';
+
+import styles from './index.module.less';
 
 const LazyModel = ({ visible }) => {
     const [showComponent, setShowComponent] = useState(false);
@@ -53,20 +55,22 @@ const useGoodItemModal = () => {
     };
 
     const modalRenderer = useMemo(() => (
-        <React.Fragment>
-            <Modal
-                open={visible}
-                closable={false}
-                maskClosable
-                width={1080}
-                onCancel={closeModal}
-                footer={null}
-                modalRender={modalRender}
-                forceRender
-                destroyOnClose={false}
-                getContainer={el => document.querySelector('#root')}
-            />
-        </React.Fragment>
+        <Modal
+            open={visible}
+            closable={false}
+            maskClosable={false}
+            width={1080}
+            onCancel={closeModal}
+            centered
+            footer={null}
+            // modalRender={modalRender}
+            className={styles.wrapper}
+            forceRender
+            destroyOnClose={false}
+            getContainer={el => el}
+        >
+            {modalRender()}
+        </Modal>
     ), [visible]);
 
     return {

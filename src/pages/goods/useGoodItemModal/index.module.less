@@ -1,10 +1,12 @@
 .container {
     position: relative;
     overflow: hidden;
+    display: flex;
 
     canvas {
-        width: 1080px !important;
-        height: 640px !important;
+        flex: 1 !important;
+        height: 580px !important;
+        margin: 0 auto;
     }
 
     .point {
@@ -20,6 +22,54 @@
         &:hover {
             color: #1269db;
             border-color: #1269db;
+        }
+    }
+
+    .toolbar {
+        position: absolute;
+        right: 0;
+        width: 240px;
+
+        .title {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            span {
+                display: inline-block;
+                &:nth-child(1) {
+                    font-size: 18px;
+                }
+                &:nth-child(2) {
+                    font-size: 14px;
+                    margin-left: 4px;
+                }
+            }
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+
+            label {
+                display: inline-block;
+                width: 68px;
+                margin-right: 8px;
+
+                &::after {
+                    content: ": ";
+                }
+            }
+        }
+    }
+
+}
+
+.wrapper {
+    :global {
+        .ant-modal-content {
+            background: transparent !important;
+            box-shadow: unset !important;
         }
     }
 }
