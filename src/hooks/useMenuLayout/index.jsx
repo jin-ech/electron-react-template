@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 16:14:10
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 16:18:16
+ * @LastEditTime: 2023-09-10 12:05:00
  * @FilePath: \electron-react-template\src\hooks\useMenuLayout\index.jsx
  * @Description: 菜单栏
  */
@@ -42,7 +42,8 @@ const useMenuLayout = () => {
     ), [selectedKeys, items, location]);
 
     return {
-        menuRenderer
+        menuRenderer,
+        items
     };
 };
 

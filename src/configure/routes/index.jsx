@@ -21,6 +21,11 @@ const routes = [
         element: React.lazy(() => import('@/pages/dashboard'))
     },
     {
+        path: '/goods',
+        exact: true,
+        element: React.lazy(() => import('@/pages/goods'))
+    },
+    {
         path: '*',
         element: React.lazy(() => import('@/pages/not-found'))
     }

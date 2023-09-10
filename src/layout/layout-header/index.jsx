@@ -2,13 +2,14 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:25:53
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 11:33:42
+ * @LastEditTime: 2023-09-10 12:04:35
  * @FilePath: \electron-react-template\src\layout\layout-header\index.jsx
  * @Description: 页面头部
  */
 
 import React from 'react';
 import cls from 'classnames';
+import { useNavigate } from 'react-router';
 
 import { CloseOutlined } from '@ant-design/icons';
 
@@ -20,10 +21,11 @@ import styles from './index.module.less';
 const LayoutHeader = () => {
     const { isMaximized, onMinimize, onMaximize, onUnMaximize } = useWindowResize();
     const { modalRenderer, showModal } = useCloseModal();
+    const navigate = useNavigate();
 
     return (
         <div className={styles.container}>
-            <div className={styles.left}>
+            <div className={styles.left} onClick={() => navigate('/')}>
                 <div className={styles.logo}></div>
                 <div className={styles.title}> electron-react-template</div>
             </div>
