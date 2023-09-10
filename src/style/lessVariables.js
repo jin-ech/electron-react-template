@@ -8,7 +8,7 @@
  */
 
 module.exports = {
-    'primary-color': '#000',
+    // 'primary-color': '#000',
     'body-min-width': '1358px',
     'content-width': '1300px'
 };

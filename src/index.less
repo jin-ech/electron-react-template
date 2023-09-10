@@ -7,11 +7,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  .scrollbar(#000, rgba(#000, .8));
-  >* {
+  overflow: hidden;
+
+  > * {
     user-select: none;
-    .scrollbar(#000, rgba(#000, .8));
+    .scrollbar(#555, rgba(@primary-color, 1));
   }
 }
 

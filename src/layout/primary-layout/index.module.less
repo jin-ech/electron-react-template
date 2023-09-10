@@ -9,21 +9,26 @@
 
     .layout {
         background: transparent;
+        position: relative;
 
         .header {
             height: 38px;
             line-height: 38px;
             padding-inline: 0;
-            background-color: rgba(#000, .2);
+            background-color: rgba(@primary-color, .2);
             z-index: 1;
             cursor: pointer;
+            position: sticky;
+            top: 0;
         }
 
         .content {
-            // height: calc(100vh - 38px);
+            height: calc(100vh - 38px);
             box-sizing: border-box;
             padding: 24px;
             z-index: 1;
+            overflow-y: auto;
+            .scrollbar(#555, rgba(@primary-color, 1));
         }
     }
 }

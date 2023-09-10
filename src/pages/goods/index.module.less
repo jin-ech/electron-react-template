@@ -1,4 +1,23 @@
 
 .container {
-    
+    .card {
+        width: 100%;
+        background-color: @primary-color;
+        color: #fff;
+        margin-bottom: 24px;
+        position: relative;
+        img {
+            width: 100%;
+            display: block;
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            span {
+                max-width: 200px;
+                .ellipse;
+            }
+        }
+    }
 }
