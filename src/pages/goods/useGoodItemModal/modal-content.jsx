@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 12:19:28
+ * @LastEditTime: 2023-09-11 13:17:59
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -69,7 +69,6 @@ const ModelContent = ({
             {/* 上 */}
             <directionalLight intensity={2} color="#fff" position={[0, 4, 0]}></directionalLight>
             <Model
-                position={[0, 0, 0]}
                 color={color}
                 scale={0.8}
                 cameraPosition={cameraPosition}
@@ -98,23 +97,23 @@ const ModelContent = ({
                 luxurious interior, and an advanced infotainment system that allows you to explore the limitless possibilities .
                 Enjoy the power, versatility, and stylish design of the Compass 3D, and take your adventures to a whole new level.
             </Typography.Paragraph>
-            <div className={styles.row}>
-                <label>color</label>
-                <ColorPicker
-                    value={color}
-                    onChange={handleColorChange}
-                />
-            </div>
-            <div className={styles.row}>
-                <label>position</label>
-                <Select
-                    style={{ width: 120 }}
-                    options={selectList}
-                    onChange={handleSelectChange}
-                />
-            </div>
-            <div className={styles.row}>
-                <ConfigProvider theme={{ token: { colorPrimary: '#fff' } }}>
+            <ConfigProvider theme={{ token: { colorPrimary: '#fff' } }}>
+                <div className={styles.row}>
+                    <label>color</label>
+                    <ColorPicker
+                        value={color}
+                        onChange={handleColorChange}
+                    />
+                </div>
+                <div className={styles.row}>
+                    <label>position</label>
+                    <Select
+                        style={{ width: 120 }}
+                        options={selectList}
+                        onChange={handleSelectChange}
+                    />
+                </div>
+                <div className={styles.row}>
                     <Button type='primary' ghost onClick={onCancel}>Cancel</Button>
                     <Button
                         type='primary'
@@ -123,8 +122,8 @@ const ModelContent = ({
                         icon={<DollarOutlined />}
                         onClick={handleBuy}
                     >Buy $303000.00</Button>
-                </ConfigProvider>
-            </div>
+                </div>
+            </ConfigProvider>
         </div>
     ), []);
 
@@ -142,7 +141,7 @@ const ModelContent = ({
                     showInfo={false}
                 />
             </div>
-            <div style={{opacity: done ? '1' : '0'}}>
+            <div style={{ opacity: done ? '1' : '0' }}>
                 {modelRenderer}
             </div>
             {toolbarRenderer}

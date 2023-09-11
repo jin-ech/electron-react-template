@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:48:12
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 09:38:38
+ * @LastEditTime: 2023-09-11 13:27:43
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\model.jsx
  * @Description: 模型
  */
@@ -40,6 +40,13 @@ const Model = ({
         new TWEEN.Tween(camera.position)
             .to(new THREE.Vector3(...position), 1000)
             .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(() => {
+                const pos = camera.position;
+                camera.position.x = pos.x;
+                camera.position.y = pos.y;
+                camera.position.z = pos.z;
+                // console.log('aa: ', pos.x, pos.y, pos.z);
+            })
             .start();
     };
 
@@ -60,9 +67,14 @@ const Model = ({
         });
     }, [color]);
 
-    useFrame(() => {
-        TWEEN.update();
-    });
+    // 提高相机移动帧率=>~60fps
+    useEffect(() => {
+        const animate = () => { 
+            TWEEN.update();
+            requestAnimationFrame(animate); 
+        } 
+        animate();
+    }, []);
 
     const handleAnimation = point => {
         animateCamera(point.cameraPositon);

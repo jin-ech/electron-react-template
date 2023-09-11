@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:25:53
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 21:13:32
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-11 12:28:38
  * @FilePath: \electron-react-template\src\layout\layout-header\index.jsx
  * @Description: 页面头部
  */
@@ -11,21 +11,21 @@ import React from 'react';
 import cls from 'classnames';
 import { useNavigate } from 'react-router';
 
-import { CloseOutlined, ShoppingCartOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Badge } from 'antd';
+import { CloseOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 import useWindowResize from '@/hooks/useWindowResize';
 import useCloseModal from '@/hooks/useCloseModal';
+import useUserInfo from '@/hooks/useUserInfo';
 
 import styles from './index.module.less';
-import useUserInfo from '@/hooks/useUserInfo';
-import { Avatar, Badge } from 'antd';
 
 const LayoutHeader = () => {
     const { isMaximized, onMinimize, onMaximize, onUnMaximize } = useWindowResize();
     const { modalRenderer, showModal } = useCloseModal();
     const navigate = useNavigate();
     const { store } = useUserInfo();
-    console.log('store: ', store);
+
     return (
         <div className={styles.container}>
             <div className={styles.left}>
