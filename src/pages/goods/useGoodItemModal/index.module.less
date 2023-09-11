@@ -1,11 +1,10 @@
 .container {
     position: relative;
     overflow: hidden;
-    display: flex;
 
     canvas {
-        flex: 1 !important;
-        height: 580px !important;
+        width: calc(100vw - 24px * 2) !important;
+        height: calc(100vh - 24px * 2) !important;
         margin: 0 auto;
     }
 
@@ -27,6 +26,7 @@
 
     .toolbar {
         position: absolute;
+        top: 0;
         right: 0;
         width: 280px;
 

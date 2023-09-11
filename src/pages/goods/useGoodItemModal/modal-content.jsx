@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 09:39:47
+ * @LastEditTime: 2023-09-11 11:41:04
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -10,10 +10,10 @@
 import React, { useMemo, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Sphere } from '@react-three/drei';
-import { Button, ColorPicker, Select, Typography } from 'antd';
+import { OrbitControls, PerspectiveCamera, Sphere, useGLTF, useProgress } from '@react-three/drei';
+import { Button, ColorPicker, ConfigProvider, Progress, Select, Typography } from 'antd';
 
-import Model, { pointList } from './model';
+import Model, { pointList, staticPath } from './model';
 import { DollarOutlined } from '@ant-design/icons';
 
 import useUserInfo from '@/hooks/useUserInfo';
@@ -21,14 +21,19 @@ import useUserInfo from '@/hooks/useUserInfo';
 import styles from './index.module.less';
 
 const selectList = pointList.map(item => ({ label: item.tooltip, value: JSON.stringify(item.cameraPositon) }));
-const defaultCameraPosition = [2, 2, 5];
+const defaultCameraPosition = [3, 3, 6];
+const minPolarAngle = Math.PI * (45 / 180);
+const maxPolarAngle = Math.PI * (75 / 180);
+
+useGLTF.preload(staticPath);
 
 const ModelContent = ({
     onCancel
 }) => {
-    const [color, updateColor] = useState('red');
+    const [color, updateColor] = useState('#fff');
     const [cameraPosition, updateCameraPosition] = useState(defaultCameraPosition);
     const { dispatchAddUserGoods } = useUserInfo();
+    const { progress } = useProgress();
 
     const handleBuy = () => {
         dispatchAddUserGoods({
@@ -70,8 +75,8 @@ const ModelContent = ({
             />
             <PerspectiveCamera position={defaultCameraPosition} makeDefault />
             <OrbitControls
-                minPolarAngle={Math.PI * (45 / 180)}
-                maxPolarAngle={Math.PI * (75 / 180)}
+                minPolarAngle={minPolarAngle}
+                maxPolarAngle={maxPolarAngle}
                 rotateSpeed={0.3}
                 enableRotate
                 enableZoom
@@ -108,20 +113,25 @@ const ModelContent = ({
                 />
             </div>
             <div className={styles.row}>
-                <Button type='text' onClick={onCancel}>Cancel</Button>
-                <Button
-                    type='text'
-                    className={styles.buy}
-                    icon={<DollarOutlined />}
-                    onClick={handleBuy}
-                >Buy $303000.00</Button>
+                <ConfigProvider theme={{ token: { colorPrimary: '#fff' } }}>
+                    <Button type='primary' ghost onClick={onCancel}>Cancel</Button>
+                    <Button
+                        type='primary'
+                        ghost
+                        className={styles.buy}
+                        icon={<DollarOutlined />}
+                        onClick={handleBuy}
+                    >Buy $303000.00</Button>
+                </ConfigProvider>
             </div>
         </div>
     ), []);
 
+    const p = Math.floor(progress);
+
     return (
         <div className={styles.container}>
-            {modelRenderer}
+            {p === 100 ? modelRenderer : <Progress percent={p} />}
             {toolbarRenderer}
         </div>
     );

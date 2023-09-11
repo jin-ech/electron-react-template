@@ -25,9 +25,7 @@ export const pointList = [
     { position: [-0.1, 1.4, -2.5], cameraPositon: [0, 1.8, -3.5], label: 3, tooltip: 'car rear' }
 ];
 
-const staticPath = getStaticPath('/static/models/jeep_compass_car/scene.gltf');
-
-useGLTF.preload(staticPath);
+export const staticPath = getStaticPath('/static/models/jeep_compass_car/scene.gltf');
 
 const Model = ({
     cameraPosition,
