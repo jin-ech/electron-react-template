@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 12:01:49
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 14:32:22
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-11 14:27:59
  * @FilePath: \electron-react-template\src\pages\goods\index.jsx
  * @Description: 商品列表
  */
@@ -15,9 +15,8 @@ import dataset from './data.json';
 
 import styles from './index.module.less';
 
-const data = new Array(4).fill('').reduce(res => {
-    res.push(dataset.results);
-    return res;
+const data = new Array(10).fill('').reduce(res => {
+    return res.concat(dataset.results);
 }, []);
 
 const Goods = () => {
@@ -32,34 +31,24 @@ const Goods = () => {
     }, []);
 
     const renderCard = data => (
-        <Card
+        <div
             className={styles.card}
-            bordered
-            hoverable
-            style={{ padding: 0 }}
-            cover={<img draggable={false} src={data.thumbnails?.images?.[0]?.url} />}
             onClick={showModal}
         >
-            {/* {data.thumbnails?.images?.map(item => (
-                <img key={item.url} src={item?.url}></img>
-            ))} */}
+            <div className={styles.image} style={{backgroundImage: `url(${data.thumbnails?.images?.[0]?.url})`}} />
             <div className={styles.info}>
                 <span>{data?.name}</span>
                 <span style={{ color: '#389e0d' }}>${(+(data?.price * 60)).toFixed(2)}</span>
             </div>
-        </Card>
+        </div>
     );
 
     return (
         <div className={styles.container}>
             {dataSource.map((row, index) => (
-                <Row key={index} gutter={[16, 16]}>
-                    {row.map(col => (
-                        <Col key={col.uid} span={6}>
-                            {renderCard(col)}
-                        </Col>
-                    ))}
-                </Row>
+                <div className={styles.wrapper} key={index}>
+                    {renderCard(row)}
+                </div>
             ))}
             {modalRenderer}
         </div>

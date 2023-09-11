@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 13:17:59
+ * @LastEditTime: 2023-09-11 14:22:00
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -25,7 +25,7 @@ const defaultCameraPosition = [5, 5, 12];
 const minPolarAngle = Math.PI * (45 / 180);
 const maxPolarAngle = Math.PI * (75 / 180);
 
-useGLTF.preload(staticPath);
+// useGLTF.preload(staticPath);
 
 const ModelContent = ({
     onCancel
