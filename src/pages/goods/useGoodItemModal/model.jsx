@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:48:12
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 20:01:32
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-11 09:38:38
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\model.jsx
  * @Description: 模型
  */
@@ -52,7 +52,10 @@ const Model = ({
     useEffect(() => {
         scene.traverse(child => {
             if (child.isMesh) {
+                child.material.roughness = 0.3;
                 if (child.parent?.name?.includes('body')) {
+                    child.material.roughness = 0.2;
+                    child.material.metalness = 0.8
                     child.material.color.set(color);
                 }
             }

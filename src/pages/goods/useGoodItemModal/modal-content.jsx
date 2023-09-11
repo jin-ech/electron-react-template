@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 09:31:17
+ * @LastEditTime: 2023-09-11 09:39:47
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -52,11 +52,11 @@ const ModelContent = ({
 
     const modelRenderer = useMemo(() => (
         <Canvas>
-            <Sphere args={[10, 32, 32]}>
-                <meshBasicMaterial color='red' />
+            <Sphere args={[5, 32, 32]}>
+                <meshBasicMaterial color='#fff' roughness={0} metalness={1} />
             </Sphere>
             <ambientLight intensity={4} color="#fff" />
-            <pointLight intensity={0.5} color="#fff" position={[0, 1.2, 0]}></pointLight>
+            <pointLight intensity={2} color="#fff" position={[0, 1.2, 0]}></pointLight>
             {/* 前 */}
             <directionalLight intensity={2} color="#fff" position={[0, 4, 4]}></directionalLight>
             {/* 后 */}
