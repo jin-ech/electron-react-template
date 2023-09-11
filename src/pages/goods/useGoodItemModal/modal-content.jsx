@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 11:41:04
+ * @LastEditTime: 2023-09-11 12:13:19
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -21,7 +21,7 @@ import useUserInfo from '@/hooks/useUserInfo';
 import styles from './index.module.less';
 
 const selectList = pointList.map(item => ({ label: item.tooltip, value: JSON.stringify(item.cameraPositon) }));
-const defaultCameraPosition = [3, 3, 6];
+const defaultCameraPosition = [5, 5, 12];
 const minPolarAngle = Math.PI * (45 / 180);
 const maxPolarAngle = Math.PI * (75 / 180);
 
@@ -128,10 +128,22 @@ const ModelContent = ({
     ), []);
 
     const p = Math.floor(progress);
+    const done = p === 100;
 
     return (
         <div className={styles.container}>
-            {p === 100 ? modelRenderer : <Progress percent={p} />}
+            <div className={styles.progress} style={{ display: done ? 'none' : 'flex' }}>
+                <Progress
+                    percent={50}
+                    style={{ width: 180 }}
+                    strokeColor="#000"
+                    trailColor="#eaeaea"
+                    showInfo={false}
+                />
+            </div>
+            <div style={{opacity: done ? '1' : '0'}}>
+                {modelRenderer}
+            </div>
             {toolbarRenderer}
         </div>
     );

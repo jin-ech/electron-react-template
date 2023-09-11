@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 21:47:27
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:01:21
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-11 11:54:36
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
  * @Description: 背景模型贴图
  */
@@ -43,7 +43,7 @@ const orbitControlsProps = {
     // minAzimuthAngle: -Math.PI * (120 / 180),
     // maxAzimuthAngle: Math.PI * (120 / 180),
     rotateSpeed: 0.3,
-    enableRotate: true,
+    enableRotate: false,
     // minDistance: 2,
     // maxDistance: 20,
     enableZoom: false
