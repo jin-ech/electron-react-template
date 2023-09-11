@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:48:12
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 14:57:42
+ * @LastEditTime: 2023-09-11 15:35:17
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\model.jsx
  * @Description: 模型
  */
@@ -22,7 +22,7 @@ import styles from './index.module.less';
 export const pointList = [
     { position: [0, 1.15, 2.6], cameraPositon: [0, 1, 2.3], label: 1, tooltip: 'car logo' },
     { position: [1, 1.4, 0.8], cameraPositon: [1.6, 1.4, 0.5], label: 2, tooltip: 'car window' },
-    { position: [-0.1, 1.4, -2.5], cameraPositon: [0, 1.4, -2.8], label: 3, tooltip: 'car rear' }
+    { position: [-0.1, 1.4, -2], cameraPositon: [0, 1.4, -2.8], label: 3, tooltip: 'car rear' }
 ];
 
 export const staticPath = getStaticPath('/static/models/jeep_compass_car/scene.gltf');
@@ -36,9 +36,9 @@ const Model = ({
     const groupRef = useRef();
     const { camera } = useThree();
 
-    const animateCamera = (position = []) => {
-        new TWEEN.Tween(camera.position)
-            .to(new THREE.Vector3(...position), 1000)
+    const animateCamera = (from, to, delay = 1000) => {
+        new TWEEN.Tween(from)
+            .to(new THREE.Vector3(...to), delay)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(() => {
                 const pos = camera.position;
@@ -50,8 +50,12 @@ const Model = ({
     };
 
     useEffect(() => {
-        animateCamera(cameraPosition);
+        animateCamera(camera.position, cameraPosition);
     }, [cameraPosition]);
+
+    const handleAnimation = point => {
+        animateCamera(camera.position, point.cameraPositon);
+    };
 
     useEffect(() => {
         scene.traverse(child => {
@@ -74,10 +78,6 @@ const Model = ({
         } 
         animate();
     }, []);
-
-    const handleAnimation = point => {
-        animateCamera(point.cameraPositon);
-    };
 
     return (
         <mesh ref={groupRef} {...props}>

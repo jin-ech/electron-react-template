@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:25:53
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 12:28:38
+ * @LastEditTime: 2023-09-11 15:13:15
  * @FilePath: \electron-react-template\src\layout\layout-header\index.jsx
  * @Description: 页面头部
  */
@@ -34,10 +34,11 @@ const LayoutHeader = () => {
                 <Avatar
                     size='small'
                     src='https://xsgames.co/randomusers/avatar.php?g=pixel&key=1'
-                    style={{ margin: '0 8px 0 18px' }}
+                    style={{ marginLeft: 24 }}
+                    onClick={() => navigate('/user-info')}
                 />
-                <Badge count={store?.goods?.length} size='small'>
-                    <ShoppingCartOutlined style={{ fontSize: 18 }} />
+                <Badge dot={store?.goods?.length > 0} size='small'>
+                    <ShoppingCartOutlined style={{ fontSize: 24, marginLeft: 12 }} />
                 </Badge>
             </div>
             <div className={styles.center}>
