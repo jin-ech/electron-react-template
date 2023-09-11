@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 12:13:19
+ * @LastEditTime: 2023-09-11 12:19:28
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -71,6 +71,7 @@ const ModelContent = ({
             <Model
                 position={[0, 0, 0]}
                 color={color}
+                scale={0.8}
                 cameraPosition={cameraPosition}
             />
             <PerspectiveCamera position={defaultCameraPosition} makeDefault />
