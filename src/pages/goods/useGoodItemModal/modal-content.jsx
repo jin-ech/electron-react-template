@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 15:24:05
+ * @LastEditTime: 2023-09-12 16:10:49
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -17,6 +17,7 @@ import Model, { pointList, staticPath } from './model';
 import { DollarOutlined } from '@ant-design/icons';
 
 import useUserInfo from '@/hooks/useUserInfo';
+import useModelProgress from '@/hooks/useModelProgress';
 
 import styles from './index.module.less';
 
@@ -33,7 +34,7 @@ const ModelContent = ({
     const [color, updateColor] = useState('#fff');
     const [cameraPosition, updateCameraPosition] = useState(defaultCameraPosition);
     const { dispatchAddUserGoods } = useUserInfo();
-    const { progress } = useProgress();
+    const { done, progressRenderer } = useModelProgress();
 
     const handleBuy = () => {
         dispatchAddUserGoods({
@@ -127,19 +128,10 @@ const ModelContent = ({
         </div>
     ), []);
 
-    const p = Math.floor(progress);
-    const done = p === 100;
-
     return (
         <div className={styles.container}>
             <div className={styles.progress} style={{ display: done ? 'none' : 'flex' }}>
-                <Progress
-                    percent={50}
-                    style={{ width: 180 }}
-                    strokeColor="#000"
-                    trailColor="#eaeaea"
-                    showInfo={false}
-                />
+                {progressRenderer}
             </div>
             <div style={{ opacity: done ? '1' : '0' }}>
                 {modelRenderer}
