@@ -11,13 +11,15 @@ import React, { Suspense, useRef } from 'react';
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 
 import FallbackLoading from '../fallback-loading';
 import { getStaticPath } from '@/utils';
 
 const targetPosition = [0, 0, 0];
-const staticPath = '/static/models/free_-_skybox_cliffside/scene.gltf';
+const staticPath = getStaticPath('/static/models/free_-_skybox_cliffside/scene.gltf');
+
+useGLTF.preload(staticPath);
 
 const Model = () => {
     const gltf = useLoader(GLTFLoader, getStaticPath(staticPath));
