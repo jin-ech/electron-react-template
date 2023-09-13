@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-12 16:10:49
+ * @LastEditTime: 2023-09-13 17:16:17
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -10,18 +10,20 @@
 import React, { useMemo, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Sphere, useGLTF, useProgress } from '@react-three/drei';
-import { Button, ColorPicker, ConfigProvider, Progress, Select, Typography } from 'antd';
+import { OrbitControls, PerspectiveCamera, Sphere, useGLTF } from '@react-three/drei';
+import { Button, ColorPicker, ConfigProvider, Select, Typography } from 'antd';
 
-import Model, { pointList, staticPath } from './model';
+import Model, { materials, pointList, staticPath } from './model';
 import { DollarOutlined } from '@ant-design/icons';
 
 import useUserInfo from '@/hooks/useUserInfo';
 import useModelProgress from '@/hooks/useModelProgress';
+import { transformObjToArr } from '@/utils';
 
 import styles from './index.module.less';
 
-const selectList = pointList.map(item => ({ label: item.tooltip, value: JSON.stringify(item.cameraPositon) }));
+const posList = pointList.map(item => ({ label: item.tooltip, value: JSON.stringify(item.cameraPositon) }));
+const materialList = transformObjToArr(materials);
 const defaultCameraPosition = [5, 5, 12];
 const minPolarAngle = Math.PI * (45 / 180);
 const maxPolarAngle = Math.PI * (75 / 180);
@@ -33,6 +35,7 @@ const ModelContent = ({
 }) => {
     const [color, updateColor] = useState('#fff');
     const [cameraPosition, updateCameraPosition] = useState(defaultCameraPosition);
+    const [currMaterial, updateCurrMaterial] = useState();
     const { dispatchAddUserGoods } = useUserInfo();
     const { done, progressRenderer } = useModelProgress();
 
@@ -42,10 +45,6 @@ const ModelContent = ({
             title: 'car',
             price: '1230.00'
         });
-    };
-
-    const handleSelectChange = pos => {
-        updateCameraPosition(JSON.parse(pos));
     };
 
     const handleColorChange = ({ metaColor }) => {
@@ -72,9 +71,13 @@ const ModelContent = ({
             <Model
                 color={color}
                 scale={0.8}
+                currMaterial={currMaterial}
                 cameraPosition={cameraPosition}
             />
-            <PerspectiveCamera position={defaultCameraPosition} makeDefault />
+            <PerspectiveCamera
+                position={defaultCameraPosition}
+                makeDefault
+            />
             <OrbitControls
                 minPolarAngle={minPolarAngle}
                 maxPolarAngle={maxPolarAngle}
@@ -85,7 +88,7 @@ const ModelContent = ({
                 maxDistance={5}
             />
         </Canvas>
-    ), [color, cameraPosition]);
+    ), [color, currMaterial, cameraPosition]);
 
     const toolbarRenderer = useMemo(() => (
         <div className={styles.toolbar}>
@@ -101,6 +104,11 @@ const ModelContent = ({
             <ConfigProvider theme={{ token: { colorPrimary: '#fff' } }}>
                 <div className={styles.row}>
                     <label>color</label>
+                    <Select
+                        style={{ width: 120, marginRight: 12 }}
+                        options={materialList}
+                        onChange={mater => updateCurrMaterial(mater)}
+                    />
                     <ColorPicker
                         value={color}
                         onChange={handleColorChange}
@@ -110,8 +118,8 @@ const ModelContent = ({
                     <label>position</label>
                     <Select
                         style={{ width: 120 }}
-                        options={selectList}
-                        onChange={handleSelectChange}
+                        options={posList}
+                        onChange={pos => updateCameraPosition(JSON.parse(pos))}
                     />
                 </div>
                 <div className={styles.row}>
