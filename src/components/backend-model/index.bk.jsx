@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 21:47:27
  * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-13 23:08:39
+ * @LastEditTime: 2023-09-13 23:20:56
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
  * @Description: 背景模型贴图
  */
@@ -64,9 +64,11 @@ const MovingPoint = () => {
         point.current.position.z = 0;
 
         // 设置相机围绕点旋转
-        camera.position.x = point.current.position.x + Math.sin(t) * 2;
+        const radius = 4; // 公转半径
+        const angle = t; // 动画进行时间，搭配正余弦用于计算旋转角度
+        camera.position.x = point.current.position.x + Math.sin(angle) * radius;
         camera.position.y = point.current.position.y;
-        camera.position.z = point.current.position.z + Math.cos(t) * 2;
+        camera.position.z = point.current.position.z + Math.cos(angle) * radius;
         camera.lookAt(point.current.position);
     });
 
