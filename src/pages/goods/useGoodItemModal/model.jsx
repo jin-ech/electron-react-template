@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:48:12
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-13 16:55:28
+ * @LastEditTime: 2023-09-14 09:43:54
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\model.jsx
  * @Description: 模型
  */
@@ -23,8 +23,7 @@ import styles from './index.module.less';
 export const pointList = [
     { position: [0, 0.6, 2.4], cameraPositon: [0, 0.6, 2.8], label: 1, tooltip: 'car logo' },
     { position: [1, 1, 0.8], cameraPositon: [1.4, 1, 0.8], label: 2, tooltip: 'car window' },
-    { position: [0, 1, -2.4], cameraPositon: [0, 1, -3], label: 3, tooltip: 'car rear' },
-    { position: [0, 1, 0], cameraPositon: [0, 1, 0], label: 4, tooltip: 'car rear', lookAt: [0, 1, 10] }
+    { position: [0, 1, -2.4], cameraPositon: [0, 1, -3], label: 3, tooltip: 'car rear' }
 ];
 
 export const materials = {
