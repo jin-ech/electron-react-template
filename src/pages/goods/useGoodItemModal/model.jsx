@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:48:12
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-14 09:43:54
+ * @LastEditTime: 2023-09-14 18:08:40
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\model.jsx
  * @Description: 模型
  */
@@ -64,6 +64,9 @@ const Model = ({
         new TWEEN.Tween(from)
             .to(new THREE.Vector3(...to), delay)
             .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(() => {
+                // TODO
+            })
             .start();
     };
 
