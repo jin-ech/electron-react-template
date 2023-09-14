@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 21:47:27
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 11:54:36
+ * @LastEditTime: 2023-09-14 09:52:00
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
  * @Description: 背景模型贴图
  */
@@ -22,7 +22,7 @@ const staticPath = getStaticPath('/static/models/free_-_skybox_cliffside/scene.g
 useGLTF.preload(staticPath);
 
 const Model = () => {
-    const gltf = useLoader(GLTFLoader, getStaticPath(staticPath));
+    const gltf = useLoader(GLTFLoader, staticPath);
     const groupRef = useRef();
 
     useFrame(() => {
