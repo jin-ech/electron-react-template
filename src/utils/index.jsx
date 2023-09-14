@@ -8,6 +8,7 @@
  */
 
 const { ipcRenderer } = window.require('electron');
+
 export * from './indexDB';
 
 /**
