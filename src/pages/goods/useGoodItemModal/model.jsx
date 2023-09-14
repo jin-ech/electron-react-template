@@ -64,12 +64,6 @@ const Model = ({
         new TWEEN.Tween(from)
             .to(new THREE.Vector3(...to), delay)
             .easing(TWEEN.Easing.Quadratic.InOut)
-            .onUpdate(() => {
-                const pos = camera.position;
-                camera.position.x = pos.x;
-                camera.position.y = pos.y;
-                camera.position.z = pos.z;
-            })
             .start();
     };
 
