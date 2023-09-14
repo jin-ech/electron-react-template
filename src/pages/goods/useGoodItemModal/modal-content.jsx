@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-14 09:41:32
+ * @LastEditTime: 2023-09-14 18:00:19
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -10,7 +10,7 @@
 import React, { useMemo, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Sphere, useGLTF } from '@react-three/drei';
+import { OrbitControls, Sphere, useGLTF } from '@react-three/drei';
 import { Button, ColorPicker, ConfigProvider, Select, Typography } from 'antd';
 
 import Model, { materials, pointList, staticPath } from './model';
@@ -24,7 +24,7 @@ import styles from './index.module.less';
 
 const posList = pointList.map(item => ({ label: item.tooltip, value: JSON.stringify(item.cameraPositon) }));
 const materialList = transformObjToArr(materials);
-const defaultCameraPosition = [5, 5, 12];
+const defaultCameraPosition = [1.5, 2, 3];
 const minPolarAngle = Math.PI * (45 / 180);
 const maxPolarAngle = Math.PI * (75 / 180);
 
@@ -57,7 +57,7 @@ const ModelContent = ({
 
     const modelRenderer = useMemo(() => (
         <Canvas>
-            <Sphere args={[5, 32, 32]}>
+            <Sphere args={[15, 32, 32]}>
                 <meshBasicMaterial color='#fff' roughness={0} metalness={1} />
             </Sphere>
             <ambientLight intensity={4} color="#fff" />
@@ -70,22 +70,18 @@ const ModelContent = ({
             <directionalLight intensity={2} color="#fff" position={[0, 4, 0]}></directionalLight>
             <Model
                 color={color}
-                scale={0.8}
                 currMaterial={currMaterial}
                 cameraPosition={cameraPosition}
             />
-            <PerspectiveCamera
-                position={defaultCameraPosition}
-                makeDefault
-            />
             <OrbitControls
+                position={defaultCameraPosition}
                 minPolarAngle={minPolarAngle}
                 maxPolarAngle={maxPolarAngle}
                 rotateSpeed={0.3}
                 enableRotate
                 enableZoom
-                minDistance={3}
-                maxDistance={5}
+                minDistance={1}
+                maxDistance={8}
             />
         </Canvas>
     ), [color, currMaterial, cameraPosition]);
