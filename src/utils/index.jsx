@@ -1,13 +1,14 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:14:32
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 11:45:51
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-14 15:18:02
  * @FilePath: \electron-react-template\src\utils\index.jsx
  * @Description: 工具包
  */
 
 const { ipcRenderer } = window.require('electron');
+export * from './indexDB';
 
 /**
  * @description: 当前运行环境
