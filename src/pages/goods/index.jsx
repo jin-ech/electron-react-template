@@ -2,22 +2,19 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 12:01:49
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-11 14:27:59
+ * @LastEditTime: 2023-09-15 11:05:24
  * @FilePath: \electron-react-template\src\pages\goods\index.jsx
  * @Description: 商品列表
  */
 
 import React, { useEffect, useState, useTransition } from 'react';
-import { Card, Col, Row } from 'antd';
 import useGoodItemModal from './useGoodItemModal';
 
 import dataset from './data.json';
 
 import styles from './index.module.less';
 
-const data = new Array(10).fill('').reduce(res => {
-    return res.concat(dataset.results);
-}, []);
+const data = new Array(10).fill('').reduce(res => res.concat(dataset.results), []);
 
 const Goods = () => {
     const [dataSource, updateDataSource] = useState([]);
