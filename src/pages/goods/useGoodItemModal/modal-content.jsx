@@ -74,7 +74,6 @@ const ModelContent = ({
                 cameraPosition={cameraPosition}
             />
             <OrbitControls
-                position={defaultCameraPosition}
                 minPolarAngle={minPolarAngle}
                 maxPolarAngle={maxPolarAngle}
                 rotateSpeed={0.3}
