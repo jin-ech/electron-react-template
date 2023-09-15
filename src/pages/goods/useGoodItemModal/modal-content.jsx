@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-10 14:33:29
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-14 18:00:19
+ * @LastEditTime: 2023-09-15 11:56:35
  * @FilePath: \electron-react-template\src\pages\goods\useGoodItemModal\modal-content.jsx
  * @Description: 弹窗内容
  */
@@ -11,7 +11,7 @@ import React, { useMemo, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere, useGLTF } from '@react-three/drei';
-import { Button, ColorPicker, ConfigProvider, Select, Typography } from 'antd';
+import { Button, ColorPicker, ConfigProvider, Select, Switch, Typography } from 'antd';
 
 import Model, { materials, pointList, staticPath } from './model';
 import { DollarOutlined } from '@ant-design/icons';
@@ -38,6 +38,7 @@ const ModelContent = ({
     const [currMaterial, updateCurrMaterial] = useState();
     const { dispatchAddUserGoods } = useUserInfo();
     const { done, progressRenderer } = useModelProgress();
+    const [helperChecked, updateHelperChecked] = useState(false);
 
     const handleBuy = () => {
         dispatchAddUserGoods({
@@ -73,6 +74,12 @@ const ModelContent = ({
                 currMaterial={currMaterial}
                 cameraPosition={cameraPosition}
             />
+            {helperChecked && (
+                <React.Fragment>
+                    <gridHelper />
+                    <axesHelper args={[10, 10, 10]} />
+                </React.Fragment>
+            )}
             <OrbitControls
                 minPolarAngle={minPolarAngle}
                 maxPolarAngle={maxPolarAngle}
@@ -83,7 +90,7 @@ const ModelContent = ({
                 maxDistance={8}
             />
         </Canvas>
-    ), [color, currMaterial, cameraPosition]);
+    ), [color, currMaterial, cameraPosition, helperChecked]);
 
     const toolbarRenderer = useMemo(() => (
         <div className={styles.toolbar}>
@@ -118,6 +125,15 @@ const ModelContent = ({
                     />
                 </div>
                 <div className={styles.row}>
+                    <label>devHelper</label>
+                    <Switch
+                        checkedChildren="open"
+                        unCheckedChildren="close"
+                        checked={helperChecked}
+                        onChange={val => updateHelperChecked(val)}
+                    />
+                </div>
+                <div className={styles.row}>
                     <Button type='primary' ghost onClick={onCancel}>Cancel</Button>
                     <Button
                         type='primary'
@@ -129,7 +145,7 @@ const ModelContent = ({
                 </div>
             </ConfigProvider>
         </div>
-    ), []);
+    ), [helperChecked]);
 
     return (
         <div className={styles.container}>
