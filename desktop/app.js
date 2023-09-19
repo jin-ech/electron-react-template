@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 20:42:07
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-19 10:02:55
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -22,8 +22,8 @@ const isDev = !app.isPackaged;
 const env = getClientEnvironment(isDev);
 const host = getLocalIpAddress() || 'localhost';
 const PORT = env.PORT || 3000;
-const preloadPath = './public/loading.html';
-const prodPath = `file://${path.join(__dirname, './build/index.html')}`;
+const preloadPath = path.resolve(__dirname, '../public/loading.html');
+const prodPath = `file://${path.resolve(__dirname, '../build/index.html')}`;
 
 const createMainWindow = () => {
     // 创建主窗口
@@ -59,6 +59,7 @@ app.whenReady().then(() => {
     $app.use(coreMiddleWare);
     // 注册事件
     $app.use(eventMiddleWare);
+    $app.use(commandMiddleWare);
     if (isDev) {
         // 注册快捷键
         $app.use(commandMiddleWare);
