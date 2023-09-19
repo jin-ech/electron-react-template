@@ -1,8 +1,8 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 20:33:49
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:47:44
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-09-19 10:12:13
  * @FilePath: \electron-react-template\src\pages\dashboard\index.jsx
  * @Description: 首屏
  */
@@ -10,9 +10,9 @@
 import React from 'react';
 
 import { Button } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
 
 import styles from './index.module.less';
-import { GithubOutlined } from '@ant-design/icons';
 
 const electron = window.require('electron');
 
