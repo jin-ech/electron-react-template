@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-19 10:02:55
+ * @LastEditTime: 2023-09-19 10:07:21
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -59,7 +59,6 @@ app.whenReady().then(() => {
     $app.use(coreMiddleWare);
     // 注册事件
     $app.use(eventMiddleWare);
-    $app.use(commandMiddleWare);
     if (isDev) {
         // 注册快捷键
         $app.use(commandMiddleWare);
