@@ -30,96 +30,19 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <link rel='stylesheet' href="./preload.css" />
     <title>electron-react-template</title>
-
-    <style>
-        body {
-            margin: 0;
-        }
-
-        #root {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            -webkit-app-region: drag;
-        }
-
-        .loading {
-            width: 62px;
-            height: 62px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            background-position: center center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-image: url('./favicon.ico');
-            animation: rotation-animation 4s linear infinite;
-        }
-
-        .info {
-            margin-top: 12px;
-            color: #000;
-            position: relative;
-        }
-
-        .extra {
-            position: relative;
-            display: inline;
-        }
-
-        .extra::after {
-            position: absolute;
-            top: 0;
-            left: 4px;
-            content: "";
-            animation: info-animation 2s linear infinite;
-        }
-
-        @keyframes rotation-animation {
-            from {
-                transform: rotateY(0)
-            }
-
-            to {
-                transform: rotateY(360deg);
-            }
-        }
-
-        @keyframes info-animation {
-            0% {
-                content: "";
-            }
-
-            33% {
-                content: ".";
-            }
-
-            66% {
-                content: "..";
-            }
-
-            100% {
-                content: "...";
-            }
-
-        }
-    </style>
 </head>
 
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-        <div class="loading"></div>
-        <div class="info">
-            the client service is starting
-            <div class="extra"></div>
+        <div class="loading-wrapper">
+            <div class="loading"></div>
+            <div class="info">
+                the client service is starting
+                <div class="extra"></div>
+            </div>
         </div>
     </div>
     <!--
