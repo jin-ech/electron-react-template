@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-19 10:07:21
+ * @LastEditTime: 2023-09-27 14:49:50
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -17,13 +17,14 @@ const eventMiddleWare = require('./middleware/eventMiddleWare');
 const commandMiddleWare = require('./middleware/commandMiddleWare');
 const selftStartMiddleWare = require('./middleware/selfStartMiddleWare');
 const { getClientEnvironment, getLocalIpAddress } = require('./middleware/utils');
+const { exec } = require('child_process');
 
 const isDev = !app.isPackaged;
 const env = getClientEnvironment(isDev);
 const host = getLocalIpAddress() || 'localhost';
 const PORT = env.PORT || 3000;
 const preloadPath = path.resolve(__dirname, '../public/loading.html');
-const prodPath = `file://${path.resolve(__dirname, '../build/index.html')}`;
+const prodPath = `http://${host}:${PORT}`;
 
 const createMainWindow = () => {
     // 创建主窗口
@@ -68,6 +69,9 @@ app.whenReady().then(() => {
         // $app.use(createProxyService);
         // 默认打开控制台
         win.webContents.openDevTools();
+    }
+    else {
+        exec('npm run client');
     }
     $app.exec();
 });

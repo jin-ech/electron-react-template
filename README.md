@@ -18,8 +18,7 @@
 
 ### 依赖工具
 
-+ **开发框架**：[react@18.2.0](https://reactjs.org/) [electron@26.1.0](https://www.electronjs.org/)
-+ **ui框架**：[antd@5.8.5](https://ant.design/index-cn/)
++ **开发框架**：[next@13.5.3](https://www.nextjs.cn/) [electron@26.1.0](https://www.electronjs.org/)
 + **编译构建**：[webpack@5.64.4](https://webpack.js.org/concepts/)
 
 ## 讨论
