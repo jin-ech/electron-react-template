@@ -3,7 +3,7 @@
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
  * @LastEditTime: 2023-09-09 20:21:26
- * @FilePath: \electron-react-template\middleware\selfStartMiddleWare.js
+ * @FilePath: \electron-next-template\middleware\selfStartMiddleWare.js
  * @Description: 自启动模块(仅开发环境启用)
  */
 

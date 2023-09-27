@@ -1,4 +1,4 @@
-# electron-react-template
+# electron-next-template
 
 桌面跨端应用项目模板
 

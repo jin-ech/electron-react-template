@@ -29,7 +29,7 @@ const prodPath = `http://${host}:${PORT}`;
 const createMainWindow = () => {
     // 创建主窗口
     const mainWindow = new BrowserWindow({
-        title: 'electron-react-template',
+        title: 'electron-next-template',
         icon: path.join(__dirname, './public/favicon.ico'),
         width: 1348,
         minWidth: 1082,

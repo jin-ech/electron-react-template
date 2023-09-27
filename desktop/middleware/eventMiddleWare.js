@@ -3,7 +3,7 @@
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
  * @LastEditTime: 2023-09-10 11:32:31
- * @FilePath: \electron-react-template\middleware\eventMiddleWare.js
+ * @FilePath: \electron-next-template\middleware\eventMiddleWare.js
  * @Description: 事件注册插件
  */
 

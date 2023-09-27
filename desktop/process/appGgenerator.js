@@ -3,7 +3,7 @@
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
  * @LastEditTime: 2023-09-09 21:33:02
- * @FilePath: \electron-react-template\process\appGgenerator.js
+ * @FilePath: \electron-next-template\process\appGgenerator.js
  * @Description: app generator
  */
 

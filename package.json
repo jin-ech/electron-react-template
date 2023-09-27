@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-template",
+  "name": "electron-next-template",
   "version": "0.1.0",
   "private": true,
   "main": "./desktop/app.js",
@@ -21,7 +21,7 @@
     "react-dom": "18.2.0"
   },
   "build": {
-    "productName": "electron-react-template",
+    "productName": "electron-next-template",
     "appId": "appIdxxxxx",
     "copyright": "Copyright © 2023 power by jinech",
     "asar": "true",
@@ -37,10 +37,12 @@
     ],
     "files": [
       "!**/node_modules/**/*",
-      "**/*"
+      "!**/release/**/*",
+      ".next/**/*",
+      "desktop/**/*"
     ],
     "win": {
-      "icon": "./build/favicon.ico",
+      "icon": "./public/favicon.ico",
       "target": [
         {
           "target": "nsis",
@@ -51,7 +53,7 @@
       ]
     },
     "dmg": {
-      "icon": "./build/favicon.ico",
+      "icon": "./public/favicon.ico",
       "contents": [
         {
           "x": 0,
@@ -61,10 +63,10 @@
       ]
     },
     "linux": {
-      "icon": "./build/favicon.ico"
+      "icon": "./public/favicon.ico"
     },
     "mac": {
-      "icon": "./build/favicon.ico"
+      "icon": "./public/favicon.ico"
     },
     "nsis": {
       "oneClick": false,
@@ -74,7 +76,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "electron-react-template"
+      "shortcutName": "electron-next-template"
     }
   },
   "devDependencies": {
@@ -84,6 +86,9 @@
     "concurrently": "^8.2.1",
     "electron": "^26.2.2",
     "electron-builder": "^24.6.4",
-    "electron-reloader": "^1.2.3"
+    "electron-reloader": "^1.2.3",
+    "less": "^4.2.0",
+    "less-loader": "^11.1.3",
+    "next-plugin-antd-less": "^1.8.0"
   }
 }

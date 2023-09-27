@@ -3,7 +3,7 @@
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: JC96821 13478707150@163.com
  * @LastEditTime: 2023-09-09 21:35:04
- * @FilePath: \electron-react-template\process\preload.js
+ * @FilePath: \electron-next-template\process\preload.js
  * @Description: preload
  */
 
