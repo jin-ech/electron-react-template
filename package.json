@@ -4,14 +4,14 @@
   "private": true,
   "author": "jinech",
   "description": "这是一个app",
-  "main": "./desktop/app.js",
+  "main": "./src/main/app.js",
   "homepage": "./",
   "scripts": {
     "client": "node scripts/start.js",
-    "electron": "electron ./desktop/app.js",
+    "electron": "electron ./src/main/app.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "start": "concurrently --kill-others-on-fail \"npm run client\" \"electron ./desktop/app\"",
+    "start": "concurrently --kill-others-on-fail \"npm run client\" \"electron ./src/main/app\"",
     "build-32": "npm run build && electron-builder --win --ia32",
     "build-64": "npm run build && electron-builder --win --x64",
     "build-linux": "npm run build && electron-builder --linux",
@@ -36,7 +36,7 @@
       "!**/node_modules/**/*",
       "build/**/*",
       "public/**/*",
-      "desktop/**/*"
+      "src/main/**/*"
     ],
     "win": {
       "icon": "./build/favicon.ico",

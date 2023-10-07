@@ -3,7 +3,7 @@
         "baseUrl": "./",
         "outDir": "./",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/renderer/*"]
         },
         "target": "es2015",
         "lib": [
@@ -30,6 +30,6 @@
         "noErrorTruncation": true,
         "noImplicitThis": false
     },
-    "include": ["src", "declaration.d.ts"],
+    "include": ["src/renderer", "declaration.d.ts"],
     "exclude": ["node_modules", "dist"]
 }
