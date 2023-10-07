@@ -46,5 +46,7 @@ module.exports = {
         'react/no-array-index-key': 'off', // 禁止index key校验
         '@babel/object-curly-spacing': 'off', // 禁用大括号前后空格校验
         '@typescript-eslint/no-unused-vars': 'off' // 关闭unuse校验
-    }
+    },
+    'include': ['src/renderer', 'declaration.d.ts'],
+    'exclude': ['node_modules', 'dist']
 };
