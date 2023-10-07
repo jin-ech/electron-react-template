@@ -24,6 +24,10 @@ const useCloseModal = () => {
     const [visible, updateVisible] = useState(false);
     const { onClose, onHide } = useWindowResize();
 
+    const closeModal = () => {
+        updateVisible(false);
+    };
+
     const handleGroupChange = modeValue => {
         if (modeValue === CloseModeEnum.close.value) {
             onClose();
@@ -40,10 +44,6 @@ const useCloseModal = () => {
         updateVisible(true);
     };
 
-    const closeModal = () => {
-        updateVisible(false);
-    };
-
     const modalRenderer = useMemo(() => (
         <Modal
             open={visible}
@@ -56,13 +56,15 @@ const useCloseModal = () => {
             footer={null}
             className={styles.container}
         >
-            <Radio.Group  onChange={e => handleGroupChange(e.target.value)}>
+            <Radio.Group onChange={e => handleGroupChange(e.target.value)}>
                 {map(closeModeList, item => (
                     <Radio
                         key={item.value}
                         value={item.value}
                         style={{ margin: '12px 0' }}
-                    >{item.label}</Radio>
+                    >
+                        {item.label}
+                    </Radio>
                 ))}
             </Radio.Group>
         </Modal>

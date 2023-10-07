@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 16:37:44
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-09-08 11:04:09
+ * @LastEditTime: 2023-10-07 11:21:31
  * @FilePath: \electron-react-template\src\index.js
  * @Description: 客户端程序入口
  */
@@ -23,7 +23,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <HashRouter>
-            <AntdConfigProvider theme={{token: themeColors,  algorithm: theme.darkAlgorithm,}}>
+            <AntdConfigProvider theme={{token: themeColors, algorithm: theme.darkAlgorithm}}>
                 <PrimaryLayout />
             </AntdConfigProvider>
         </HashRouter>

@@ -1,8 +1,9 @@
+/* eslint-disable react/no-unknown-property */
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 21:47:27
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:01:21
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-10-07 11:23:00
  * @FilePath: \electron-react-template\src\pages\dashboard\Model.jsx
  * @Description: 背景模型贴图
  */
@@ -60,6 +61,6 @@ const BackModel = () => {
             </Canvas>
         </Suspense>
     );
-}
+};
 
 export default BackModel;

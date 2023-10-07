@@ -72,7 +72,7 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-const lessModifyVars = require('../src/style/lessVariables');
+const lessModifyVars = require('../src/renderer/style/lessVariables');
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -315,7 +315,7 @@ module.exports = function (webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
-        '@': path.join(__dirname, '../src'),
+        '@': path.join(__dirname, '../src/renderer'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
@@ -524,7 +524,7 @@ module.exports = function (webpackEnv) {
                 {
                   loader: 'style-resources-loader',
                   options: {
-                    patterns: path.resolve(__dirname, '../src/style/themes/default/index.less')
+                    patterns: path.resolve(__dirname, '../src/renderer/style/themes/default/index.less')
                   }
                 }
               ]
@@ -556,7 +556,7 @@ module.exports = function (webpackEnv) {
                 {
                   loader: 'style-resources-loader',
                   options: {
-                    patterns: path.resolve(__dirname, '../src/style/themes/default/index.less')
+                    patterns: path.resolve(__dirname, '../src/renderer/style/themes/default/index.less')
                   }
                 }
               ],
