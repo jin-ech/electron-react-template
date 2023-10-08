@@ -2,13 +2,13 @@
   "name": "electron-next-template",
   "version": "0.1.0",
   "private": true,
-  "main": "./desktop/app.js",
+  "main": "./src/main/app.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "client": "next start",
     "lint": "next lint",
-    "start": "concurrently --kill-others-on-fail \"npm run dev\" \"electron ./desktop/app\"",
+    "start": "concurrently --kill-others-on-fail \"npm run dev\" \"electron ./src/main/app\"",
     "build-32": "npm run build && electron-builder --win --ia32",
     "build-64": "npm run build && electron-builder --win --x64",
     "build-linux": "npm run build && electron-builder --linux",
@@ -39,7 +39,7 @@
       "!**/node_modules/**/*",
       "!**/release/**/*",
       ".next/**/*",
-      "desktop/**/*"
+      "src/main/**/*"
     ],
     "win": {
       "icon": "./public/favicon.ico",
