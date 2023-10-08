@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 15:17:37
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-10-08 15:15:18
+ * @LastEditTime: 2023-10-08 15:36:07
  * @FilePath: \electron-next-template\middleware\selfStartMiddleWare.js
  * @Description: 自启动模块(仅开发环境启用)
  */
@@ -10,7 +10,7 @@
 module.exports = (args = {}, _next) => {
     const http = require('http');
     const { getLocalIpAddress, consoleLog } = require('./utils');
-    const { host = getLocalIpAddress(), port = 3000, win } = args;
+    const { host = getLocalIpAddress(), port, win } = args;
     const timeout = 1500;
 
     const checkAddressAvailability = (url, timeout) => {

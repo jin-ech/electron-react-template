@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-10-08 15:27:44
+ * @LastEditTime: 2023-10-08 15:41:20
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -22,8 +22,8 @@ const { exec } = require('child_process');
 const isDev = !app.isPackaged;
 const env = getClientEnvironment(isDev);
 const host = getLocalIpAddress() || 'localhost';
-const PORT = env.PORT || 3000;
-const preloadPath = path.resolve(__dirname, '../public/loading.html');
+const PORT = env.PORT || 8001;
+const preloadPath = path.resolve(__dirname, '../../public/loading.html');
 const prodPath = `http://${host}:${PORT}`;
 
 const createMainWindow = () => {

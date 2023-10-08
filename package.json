@@ -4,9 +4,9 @@
   "private": true,
   "main": "./src/main/app.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8001",
     "build": "next build",
-    "client": "next start",
+    "client": "next start -p 8001",
     "lint": "next lint",
     "start": "concurrently --kill-others-on-fail \"npm run dev\" \"electron ./src/main/app\"",
     "build-32": "npm run build && electron-builder --win --ia32",
