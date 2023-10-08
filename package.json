@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "main": "./src/main/app.js",
+  "author": "jinech",
+  "description": "这是一个app",
   "scripts": {
     "dev": "next dev -p 8001",
     "build": "next build",
