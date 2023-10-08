@@ -1,13 +1,13 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 15:17:37
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-10 11:32:31
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-10-08 17:40:56
  * @FilePath: \electron-next-template\middleware\eventMiddleWare.js
  * @Description: 事件注册插件
  */
 
-module.exports = ({ win, app, ipcMain }, next) => {
+module.exports = ({ win, app, ipcMain, rumtime }, next) => {
     const { Notification } = require('electron');
     const path = require('path');
 
@@ -33,6 +33,7 @@ module.exports = ({ win, app, ipcMain }, next) => {
 
     ipcMain.on('close', () => {
         app.quit();
+        rumtime?.kill();
     });
 
     ipcMain.on('minimize', () => {
@@ -64,7 +65,9 @@ module.exports = ({ win, app, ipcMain }, next) => {
     app.on('activate', () => {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
+        // eslint-disable-next-line no-undef
         if (BrowserWindow.getAllWindows().length === 0) {
+            // eslint-disable-next-line no-undef
             createWindow();
         }
     });

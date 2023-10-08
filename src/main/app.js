@@ -2,7 +2,7 @@
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-02 13:13:05
  * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
- * @LastEditTime: 2023-10-08 15:41:20
+ * @LastEditTime: 2023-10-08 17:51:44
  * @FilePath: \app\app.js
  * @Description: electron 入口文件
  */
@@ -46,15 +46,17 @@ const createMainWindow = () => {
     // 加载app内容
     isDev ? mainWindow.loadFile(preloadPath) : mainWindow.loadURL(prodPath);
     return mainWindow;
-}
+};
 
 app.whenReady().then(() => {
     const win = createMainWindow();
+    const rumtime = !isDev ? exec('npm run client') : null;
     const $app = AppGenerator.getInstance({
         win,
         isDev,
         port: PORT,
-        host
+        host,
+        rumtime
     });
     // 基础&核心功能注册
     $app.use(coreMiddleWare);
@@ -69,9 +71,6 @@ app.whenReady().then(() => {
         // $app.use(createProxyService);
         // 默认打开控制台
         win.webContents.openDevTools();
-    }
-    else {
-        exec('npm run client');
     }
     $app.exec();
 });

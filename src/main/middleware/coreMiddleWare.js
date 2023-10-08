@@ -1,13 +1,13 @@
 /*
  * @Author: JC96821 13478707150@163.com
  * @Date: 2023-09-09 19:14:53
- * @LastEditors: JC96821 13478707150@163.com
- * @LastEditTime: 2023-09-09 19:41:41
+ * @LastEditors: WIN-J7OL7MK489U\EDY 13478707150@163.com
+ * @LastEditTime: 2023-10-08 17:40:13
  * @FilePath: \electron-next-template\middleware\coreMiddleWare.js
  * @Description: 基础&核心功能注册
  */
 
-const { Menu, Tray, shell } = require("electron");
+const { Menu, Tray, shell } = require('electron');
 
 module.exports = ({ app, isDev, win }, next) => {
 
@@ -20,7 +20,7 @@ module.exports = ({ app, isDev, win }, next) => {
     const contextMenu = Menu.buildFromTemplate([
         { label: 'github', type: 'normal', click: () => shell.openExternal('https://github.com/jin-ech/electron-next-template') },
         { label: '退出应用', type: 'normal', click: () => app.quit() }
-    ])
+    ]);
     tray.setToolTip('electron-next-template');
     tray.setContextMenu(contextMenu);
 
